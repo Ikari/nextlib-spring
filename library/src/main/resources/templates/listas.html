@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Listagens</title>
+    </head>
+    <body>
+        <div th:fragment="produto">
+            <h1>Lista de Produtos</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>NOME</th>
+                        <th>PREÇO</th>
+                        <th>EAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="produto : ${produtos}">
+                        <td th:text="${produto.nome}">Nome do Produto</td>
+                        <td th:text="${produto.preco}">Preço do Produto</td>
+                        <td th:text="${produto.ean}">EAN do Produto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
