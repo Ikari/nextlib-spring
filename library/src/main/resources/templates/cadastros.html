@@ -4,84 +4,92 @@
         <title>Cadastros</title>
     </head>
     <body>
-        
         <div th:fragment="cliente">
             <form action="#" th:action="@{/cadastrarCliente}" th:object="${cliente}" method="POST" >
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>CADASTRO DE CLIENTES</h1>
-                    </div>
-                </div>            
-                <div class="row">                                
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
+                <div class="bs-example" data-example-id="simple-jumbotron">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-md-6">
-                                <span>NOME</span>
-                                <input type="text" th:field="*{nome}" />
+                            <div class="col-xs-12"
+                                 <h1>CADASTRO DE CLIENTES</h1>
                             </div>
-                            <div class="col-md-6">
-                                <span>DATA DE NASCIMENTO</span>
-                                <input type="text" th:field="*{dataNascimento}" />
-                            </div>                
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span>CPF</span>
-                                <input type="text" th:field="*{cpf}" />
+                    </div>            
+                    <div class="row">                                
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>NOME</span>
+                                    <input type="text" th:field="*{nome}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <span>DATA DE NASCIMENTO</span>
+                                    <input type="text" th:field="*{dataNascimento}" />
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <span>RG</span>
-                                <input type="text" th:field="*{rg}" />
-                            </div>                
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>CPF</span>
+                                    <input type="text" th:field="*{cpf}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <span>RG</span>
+                                    <input type="text" th:field="*{rg}" />
+                                </div>                
+                            </div>
                         </div>
+                        <div class="col-md-4"></div>
                     </div>
-                    <div class="col-md-4"></div>
+                    <div class="row">
+                        <div class="col-lg-12"><input type="submit" /> </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12"><input type="submit" /> </div>
-                </div>
-            </form>
         </div>
-        
-        <div th:fragment="produto">
-            <form action="#" th:action="@{/cadastrarProduto}" th:object="${produto}" method="POST" >
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>CADASTRO DE PRODUTOS</h1>
-                    </div>
-                </div>            
-                <div class="row">                                
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span>NOME</span>
-                                <input type="text" th:field="*{nome}" />
-                            </div>
-                            <div class="col-md-6">
-                                <span>DESCRIÇÃO</span>
-                                <input type="text" th:field="*{descricao}" />
-                            </div>                
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span>PREÇO</span>
-                                <input type="text" th:field="*{preco}" />
-                            </div>
-                            <div class="col-md-6">
-                                <span>EAN</span>
-                                <input type="text" th:field="*{ean}" />
-                            </div>                
-                        </div>
-                    </div>
-                    <div class="col-md-4"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12"><input type="submit" /> </div>
-                </div>
-            </form>
+        </form>
         </div>
-        
+
+        <div class="container">
+            <div th:fragment="produto">
+                <form action="#" th:action="@{/cadastrarProduto}" th:object="${produto}" method="POST" >
+                    <div class="bs-example" data-example-id="simple-jumbotron">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12"
+                                     <h1>CADASTRO DE PRODUTOS</h1>
+                                </div>
+                            </div>            
+                            <div class="row">                                                               
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span>NOME</span>
+                                            <input type="text" th:field="*{nome}" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span>DESCRIÇÃO</span>
+                                            <input type="text" th:field="*{descricao}" />
+                                        </div>                
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span>PREÇO</span>
+                                            <input type="text" th:field="*{preco}" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span>EAN</span>
+                                            <input type="text" th:field="*{ean}" />
+                                        </div>                
+                                    </div>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12"><input type="submit" /> </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
