@@ -6,7 +6,7 @@
     <body>
         <div class="container">
             <div th:fragment="cliente">
-                <form action="#" th:action="@{/cadastrarClient}" th:object="${cliente}" method="POST" >
+                <form action="#" th:action="@{/cadastrarCliente}" th:object="${cliente}" method="POST">
                     <div class="bs-example" data-example-id="simple-jumbotron">
                         <div class="container">
                             <div class="row">
@@ -14,60 +14,60 @@
                                     <h3>Cadastro de Clientes</h3>
                                 </div>
                             </div>     
-                                <form class="form-horizontal">                          
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-xs-12">
-                                                        <span for="inputName1">NOME</span>
-                                                        <input type="text" th:field="*{nome}" class="form-control" id="inputName1" placeholder="Nome"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-xs-12">
-                                                        <span for="inputNascimento">Data de Nascimento</span>
-                                                        <input type="text" th:field="*{dataNascimento}" class="form-control" id="inputNascimento" placeholder="DD/MM/AAAA"/>
-                                                    </div>     
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-xs-12">
-                                                        <span for="inputCpf">CPF</span>
-                                                        <input type="text" th:field="*{cpf}" class="form-control" id="inputCpf" placeholder="CPF"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-xs-12">
-                                                        <span for="inputRg">RG</span>
-                                                        <input type="text" th:field="*{rg}" class="form-control" id="inputRg" placeholder="RG"/>
-                                                    </div>     
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-xs-12">
+                            <form class="form-horizontal">                          
+                                <div class="col-md-6">
+                                    <div class="row">
                                         <div class="form-group">
                                             <div class="row">
-                                                <input href="#" class="btn btn-warning" type="submit"/>                                     
+                                                <div class="col-md-11 col-xs-12">
+                                                    <span for="inputName1">Nome</span>
+                                                    <input type="text" th:field="*{nome}" class="form-control" id="inputName1" placeholder="Nome"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-11 col-xs-12">
+                                                    <span for="inputNascimento">Data de Nascimento</span>
+                                                    <input type="text" th:field="*{dataNascimento}" class="form-control" id="inputNascimento" placeholder="DD/MM/AAAA"/>
+                                                </div>     
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-11 col-xs-12">
+                                                    <span for="inputCpf">CPF</span>
+                                                    <input type="text" th:field="*{cpf}" class="form-control" id="inputCpf" placeholder="CPF"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-11 col-xs-12">
+                                                    <span for="inputRg">RG</span>
+                                                    <input type="text" th:field="*{rg}" class="form-control" id="inputRg" placeholder="RG"/>
+                                                </div>     
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <input href="#" class="btn btn-warning" type="submit"/>                                     
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </form>
             </div>
+        </div>
         <div class="container">
             <div th:fragment="produto">
                 <form action="#" th:action="@{/cadastrarProduto}" th:object="${produto}" method="POST" >
