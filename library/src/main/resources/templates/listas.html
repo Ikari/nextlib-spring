@@ -6,37 +6,52 @@
     <body>
         <div class="container">
             <div th:fragment="produto">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h1>Lista de Produtos</h1>
-                    </div>
-                </div>    
-                <table>
-                    <thead>
-                        <div class="container">
-                            <tr>
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="thumbnail">
-                                            <img src="https://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjztvPZ1arWAhVFjZAKHaB_DyMQjRwIBw&url=https%3A%2F%2Fwww.lojaiplace.com.br%2FiPlace%2Fiplace%2Fiphone%2Fcat1300011%2F&psig=AFQjCNGjeKVFFaFyaa55Kl2i-EzCtBPyEg&ust=1505684413828365" alt="iphone 6s">
-                                                <div class="caption">
-                                                    <th>Nome</th>
-                                                    <th>PREÇO</th>
-                                                    <th>Nome</th>
-                                                    
-                                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </tr>
+                <div class="bs-example" data-example-id="simple-jumbotron">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <h3>Lista de Produtos</h3>
+                            </div>
                         </div>
-
-                    </thead>           
-                </table>
+                        <div class="col-md-12">
+                            <div class="col-md-4 col-xs-12">
+                                <div class="thumbnail">
+                                    <img src="" alt="">
+                                        <h5>Nome do Produto</h5>
+                                        <h5>R$: </h5>
+                                        <p>Pai Rico, Pai Pobre é o primeiro best-seller de Robert Kiyosaki e Sharon Lechter. Ele advoga a busca pela independência financeira através de investimento, imóveis, ter seu próprio negócio e o uso de táticas financeiras de proteção do patrimônio.</p>
+                                        <p><a href="#" class="btn btn-warning" role="button">Adicionar</a></p>
+                                </div>
+                            </div>   
+                            <div class="col-md-4 col-xs-12">
+                                <div class="thumbnail">
+                                    <img src="" alt="">
+                                        <h5>Nome do Produto</h5>
+                                        <h5>R$: </h5>
+                                        <p>Pai Rico, Pai Pobre é o primeiro best-seller de Robert Kiyosaki e Sharon Lechter. Ele advoga a busca pela independência financeira através de investimento, imóveis, ter seu próprio negócio e o uso de táticas financeiras de proteção do patrimônio.</p>
+                                        <p><a href="#" class="btn btn-warning" role="button">Adicionar</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                                <div class="thumbnail">
+                                    <img src="" alt="">
+                                        <h5>Nome do Produto</h5>
+                                        <h5>R$: </h5>
+                                        <p>Pai Rico, Pai Pobre é o primeiro best-seller de Robert Kiyosaki e Sharon Lechter. Ele advoga a busca pela independência financeira através de investimento, imóveis, ter seu próprio negócio e o uso de táticas financeiras de proteção do patrimônio.</p>
+                                        <p><a href="#" class="btn btn-warning" role="button">Adicionar</a></p>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
             </div>
         </div>
+        <tbody>
+            <tr th:each="produto : ${produtos}">
+                <td th:text="${produto.nome}">Nome do Produto</td>
+                <td th:text="${produto.preco}">Preço do Produto</td>
+                <td th:text="${produto.ean}">EAN do Produto</td>
+            </tr>
+        </tbody>
     </body>
 </html>
