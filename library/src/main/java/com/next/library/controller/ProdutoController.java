@@ -5,8 +5,10 @@
  */
 package com.next.library.controller;
 
+import com.next.library.model.Carrinho;
 import com.next.library.model.Produto;
 import com.next.library.repository.IProdutoRepository;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,6 +34,31 @@ public class ProdutoController {
         Iterable<Produto> produtos = _repository.findAll();
         
         model.addAttribute("produtos", produtos);
+        
+        return "listas :: produto";
+    }
+    
+    @RequestMapping(value="/detalhe-produto", method=RequestMethod.GET)
+    public String detalharProdutos(int produto){
+        
+//        Iterable<Produto> produtos = _repository.findAll();
+//                
+//        model.addAttribute("produtos", produtos);
+        
+        return "listas :: produto";
+    }
+    
+    @RequestMapping(value="/carrinho", method=RequestMethod.GET)
+    public String carrinho(HttpServletRequest request, Model model){
+        
+        Carrinho carrinho = (Carrinho)request.getSession().getAttribute("carrinho");
+        
+        if (carrinho != null)
+            System.out.print("carrinho recuperado da session");
+        
+//        Iterable<Produto> produtos = _repository.findAll();
+//                
+//        model.addAttribute("produtos", produtos);
         
         return "listas :: produto";
     }
