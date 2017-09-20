@@ -5,10 +5,13 @@ import com.next.library.model.Produto;
 import com.next.library.repository.IProdutoRepository;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,10 +30,22 @@ public class MainController {
     }
     
     @RequestMapping(value="/", method=RequestMethod.GET)
-    public String index(HttpServletRequest request) throws IOException {        
+    public String index(HttpServletRequest request) throws IOException, URISyntaxException {        
+        
         request.getSession().setAttribute("carrinho", new Carrinho());  
         
         Path path01 = Paths.get("C:/Users/roger.roliveira/Downloads", "como-a-mente-funciona.jpg");
+        Path path02 = Paths.get("C:/Users/roger.roliveira/Downloads", "do-que-e-feito-o-pensamento.jpg");
+        Path path03 = Paths.get("C:/Users/roger.roliveira/Downloads", "o-orfanato-da-srta-peregrine.jpg");
+                
+        IOUtils(
+        ClassLoader.class.getResourceAsStream("como-a-mente-funciona.jpg")
+        ).
+               
+        
+                
+//        Path path02 = Paths.get(ClassLoader.getSystemResource("do-que-e-feito-o-pensamento.jpg").toURI());
+//        Path path03 = Paths.get(ClassLoader.getSystemResource("o-orfanato-da-srta-peregrine.jpg").toURI());
         
         _repository.save(
                 new Produto(
@@ -42,8 +57,6 @@ public class MainController {
                     47.9,
                 Files.readAllBytes(path01)));        
         
-        Path path02 = Paths.get("C:/Users/roger.roliveira/Downloads", "do-que-e-feito-o-pensamento.jpg");
-        
         _repository.save(
                 new Produto(
                     2, 
@@ -53,8 +66,6 @@ public class MainController {
                     + "possível explicação da natureza humana.",
                     52.9,
                 Files.readAllBytes(path02)));        
-        
-        Path path03 = Paths.get("C:/Users/roger.roliveira/Downloads", "o-orfanato-da-srta-peregrine.jpg");
         
         _repository.save(
                 new Produto(
