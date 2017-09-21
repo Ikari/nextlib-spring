@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -51,8 +52,8 @@ public class ProdutoController {
         return "detalhes :: produto";
     }
     
-    @RequestMapping(value="/adicionar-produto", method=RequestMethod.POST)
-    public String carrinho(@RequestBody Produto produto, HttpServletRequest request, Model model){
+    @RequestMapping(value="/adicionar-produto", method=RequestMethod.POST)    
+    public @ResponseBody String carrinho(@RequestBody Produto produto, HttpServletRequest request, Model model){
         
         Carrinho carrinho = (Carrinho)request.getSession().getAttribute("carrinho");
         
@@ -64,8 +65,8 @@ public class ProdutoController {
         request.getSession().setAttribute("carrinho", carrinho);
         
         carrinho.getProdutos().forEach(p -> System.out.println(p.getProduto().getNome()));
-                
-        return "listas :: produto";
+        
+        return "{}";
     }
     
     @RequestMapping(value="/carrinho", method=RequestMethod.GET)
@@ -78,7 +79,7 @@ public class ProdutoController {
         
         model.addAttribute("carrinho", carrinho);
         
-        return "carrinho";
+        return "carrinho :: carrinho";
     }
     
     @RequestMapping(value="/produto", method=RequestMethod.GET)

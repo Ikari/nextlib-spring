@@ -9,8 +9,6 @@ $(function(){
         var data = {};
         data["id"] = $(this).attr("data-id");
                 
-                console.log(data);
-                
         $.ajax(
             {
                 type: "POST",
@@ -18,7 +16,9 @@ $(function(){
                 url: "/adicionar-produto",
                 data: JSON.stringify(data),
                 dataType: 'json',
-                success: function(s){ console.log("sucesso"); },
+                success: function(data){ 
+                    $("#content").load("/carrinho");
+                },
                 error: function(e){ console.log(e); }
             }
         );
