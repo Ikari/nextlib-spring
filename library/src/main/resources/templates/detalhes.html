@@ -23,13 +23,14 @@
                                         <h5 th:text='${produto.nome}'>Nome do Produto</h5>
                                         <h5 th:text='${produto.preco}'>R$65.00 </h5>
                                         <p th:text='${produto.descricao}'>Pai Rico, Pai Pobre é o primeiro best-seller de Robert Kiyosaki e Sharon Lechter. Ele advoga a busca pela independência financeira através de investimento.</p>
-                                        <p><a href="#" class="btn btn-warning detalhe" th:attr="data-id=${produto.id}" role="button">Adicionar</a></p>
+                                        <p><a href="#" class="btn btn-warning adicionar" th:attr="data-id=${produto.id}" role="button">Adicionar ao Carrinho</a></p>
                                     </div>
                                 </div>
                             </div> 
                         </div>
                     </div>
-                </div>                               
+                </div>     
+                <script src="../../resources/js/pages/detalhe.js" type="text/javascript"></script>
             </div>
         </div>
     </body>

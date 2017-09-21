@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,16 +52,18 @@ public class ProdutoController {
     }
     
     @RequestMapping(value="/adicionar-produto", method=RequestMethod.POST)
-    public String carrinho(@RequestParam int produtoid, HttpServletRequest request, Model model){
+    public String carrinho(@RequestBody Produto produto, HttpServletRequest request, Model model){
         
         Carrinho carrinho = (Carrinho)request.getSession().getAttribute("carrinho");
         
         if (carrinho == null)
             carrinho = new Carrinho();
         
-        carrinho.AdicionarProduto(_repository.findOne(produtoid), 1);
+        carrinho.AdicionarProduto(_repository.findOne(produto.getId()), 1);
         
         request.getSession().setAttribute("carrinho", carrinho);
+        
+        carrinho.getProdutos().forEach(p -> System.out.println(p.getProduto().getNome()));
                 
         return "listas :: produto";
     }
