@@ -34,19 +34,12 @@ public class MainController {
         
         request.getSession().setAttribute("carrinho", new Carrinho());  
         
+        //IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("como-a-mente-funciona.jpg"))
+        
         Path path01 = Paths.get("C:/Users/roger.roliveira/Downloads", "como-a-mente-funciona.jpg");
         Path path02 = Paths.get("C:/Users/roger.roliveira/Downloads", "do-que-e-feito-o-pensamento.jpg");
         Path path03 = Paths.get("C:/Users/roger.roliveira/Downloads", "o-orfanato-da-srta-peregrine.jpg");
-                
-        IOUtils(
-        ClassLoader.class.getResourceAsStream("como-a-mente-funciona.jpg")
-        ).
-               
-        
-                
-//        Path path02 = Paths.get(ClassLoader.getSystemResource("do-que-e-feito-o-pensamento.jpg").toURI());
-//        Path path03 = Paths.get(ClassLoader.getSystemResource("o-orfanato-da-srta-peregrine.jpg").toURI());
-        
+
         _repository.save(
                 new Produto(
                     1, 

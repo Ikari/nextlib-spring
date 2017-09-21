@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -39,12 +41,27 @@ public class ProdutoController {
     }
     
     @RequestMapping(value="/detalhe-produto", method=RequestMethod.GET)
-    public String detalharProdutos(int produto){
+    public String detalharProdutos(@RequestParam int id, Model model){
         
-//        Iterable<Produto> produtos = _repository.findAll();
-//                
-//        model.addAttribute("produtos", produtos);
+        Produto produtos = _repository.findOne(id);
+                
+        model.addAttribute("produtos", produtos);
         
+        return "detalhes :: produto";
+    }
+    
+    @RequestMapping(value="/adicionar-produto", method=RequestMethod.POST)
+    public String carrinho(@RequestParam int produtoid, HttpServletRequest request, Model model){
+        
+        Carrinho carrinho = (Carrinho)request.getSession().getAttribute("carrinho");
+        
+        if (carrinho == null)
+            carrinho = new Carrinho();
+        
+        carrinho.AdicionarProduto(_repository.findOne(produtoid), 1);
+        
+        request.getSession().setAttribute("carrinho", carrinho);
+                
         return "listas :: produto";
     }
     
@@ -53,14 +70,12 @@ public class ProdutoController {
         
         Carrinho carrinho = (Carrinho)request.getSession().getAttribute("carrinho");
         
-        if (carrinho != null)
-            System.out.print("carrinho recuperado da session");
+        if (carrinho == null)
+            carrinho = new Carrinho();
         
-//        Iterable<Produto> produtos = _repository.findAll();
-//                
-//        model.addAttribute("produtos", produtos);
+        model.addAttribute("carrinho", carrinho);
         
-        return "listas :: produto";
+        return "carrinho";
     }
     
     @RequestMapping(value="/produto", method=RequestMethod.GET)

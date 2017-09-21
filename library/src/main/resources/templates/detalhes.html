@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Listagens</title>
+        <title>Detalhes</title>
     </head>
     <body>
         <div class="container">
@@ -10,7 +10,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
-                                <h3>Lista de Produtos</h3>
+                                <h3>Produto</h3>
                             </div>
                         </div>
                         <div th:each='produto : ${produtos}' class="col-xs-12 col-md-12 ng-scope">
@@ -29,10 +29,7 @@
                             </div> 
                         </div>
                     </div>
-                </div>               
-                
-                <script src="../../resources/js/pages/produtos.js" type="text/javascript"></script>
-                
+                </div>                               
             </div>
         </div>
     </body>
