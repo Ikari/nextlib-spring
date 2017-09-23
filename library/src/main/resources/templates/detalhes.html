@@ -13,20 +13,18 @@
                                 <h3>Produto</h3>
                             </div>
                         </div>
-                        <div th:each='produto : ${produtos}' class="col-xs-12 col-md-12 ng-scope">
-                            <div class="col-md-4 col-xs-12"> 
-                                <div class="col-md-5 col-xs-12">
-                                    <img th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" alt="" width="100px" height="100px;">
+                        <div th:each='produto : ${produtos}' class="col-xs-12 ol-sm-12 col-md-12 ng-scope">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" alt="" width="50%" height="50%">
                                 </div>
                                 <div class="caption">
-                                    <div class="col-md-7 col-xs-12">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
                                         <h5 th:text='${produto.nome}'>Nome do Produto</h5>
                                         <h5 th:text='${produto.preco}'>R$65.00 </h5>
                                         <p th:text='${produto.descricao}'>Pai Rico, Pai Pobre é o primeiro best-seller de Robert Kiyosaki e Sharon Lechter. Ele advoga a busca pela independência financeira através de investimento.</p>
                                         <p><a href="#" class="btn btn-warning adicionar" th:attr="data-id=${produto.id}" role="button">Adicionar ao Carrinho</a></p>
                                     </div>
                                 </div>
-                            </div> 
                         </div>
                     </div>
                 </div>     
