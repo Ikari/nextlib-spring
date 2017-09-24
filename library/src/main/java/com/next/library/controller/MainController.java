@@ -33,12 +33,10 @@ public class MainController {
     public String index(HttpServletRequest request) throws IOException, URISyntaxException {        
         
         request.getSession().setAttribute("carrinho", new Carrinho());  
-        
-        //IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("como-a-mente-funciona.jpg"))
-        
-        Path path01 = Paths.get("C:/Users/roger.roliveira/Downloads", "como-a-mente-funciona.jpg");
-        Path path02 = Paths.get("C:/Users/roger.roliveira/Downloads", "do-que-e-feito-o-pensamento.jpg");
-        Path path03 = Paths.get("C:/Users/roger.roliveira/Downloads", "o-orfanato-da-srta-peregrine.jpg");
+                
+//        Path path01 = Paths.get("C:/Users/roger.roliveira/Downloads", "como-a-mente-funciona.jpg");
+//        Path path02 = Paths.get("C:/Users/roger.roliveira/Downloads", "do-que-e-feito-o-pensamento.jpg");
+//        Path path03 = Paths.get("C:/Users/roger.roliveira/Downloads", "o-orfanato-da-srta-peregrine.jpg");
 
         _repository.save(
                 new Produto(
@@ -48,7 +46,8 @@ public class MainController {
                     + "Pinker mostra como podemos estar bem próximos de uma das últimas fronteiras do conhecimento - "
                     + "a mente humana.",
                     47.9,
-                Files.readAllBytes(path01)));        
+                //Files.readAllBytes(path01)));        
+                IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/como-a-mente-funciona.jpg"))));
         
         _repository.save(
                 new Produto(
@@ -58,7 +57,8 @@ public class MainController {
                     + "Como a mente funciona (1998), Steven Pinker encontra na linguagem uma janela para uma "
                     + "possível explicação da natureza humana.",
                     52.9,
-                Files.readAllBytes(path02)));        
+                //Files.readAllBytes(path02)));        
+                IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/do-que-e-feito-o-pensamento.jpg"))));
         
         _repository.save(
                 new Produto(
@@ -68,7 +68,8 @@ public class MainController {
                     + "mistura ficção e fotografia. A história começa com uma tragédia familiar que lança Jacob, "
                             + "um rapaz de 16 anos, em uma jornada até uma ilha remota na costa do País de Gales.",
                     13.9,
-                Files.readAllBytes(path03)));        
+                //Files.readAllBytes(path03)));        
+                IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/o-orfanato-da-srta-peregrine.jpg"))));
         
         return "index";
     }
