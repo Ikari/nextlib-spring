@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author roger.roliveira
  */
 @Entity
-public class ProdutoCarrinho implements Serializable {
+public class ProdutoCarrinho implements Serializable  {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,8 +27,13 @@ public class ProdutoCarrinho implements Serializable {
     public ProdutoCarrinho(){
     }
     
-    public ProdutoCarrinho(Produto produto, int quantidade){
+    public ProdutoCarrinho(Produto produto){
         setProduto(produto);
+        setQuantidade(1);
+    }
+    
+    public ProdutoCarrinho(Produto produto, int quantidade){
+        this(produto);
         setQuantidade(quantidade);
     }
     
@@ -72,5 +77,9 @@ public class ProdutoCarrinho implements Serializable {
      */
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+    
+    public int adicionar(){
+        return this.quantidade++;
     }
 }

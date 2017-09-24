@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,16 +27,29 @@ public class Carrinho implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     @ElementCollection
+    @OneToMany
     private List<ProdutoCarrinho> produtos;
+    @OneToOne
     private Cliente cliente;
     private double valorTotal;
 
     public Carrinho(){
-        setProdutos(new ArrayList<ProdutoCarrinho>());
+        setProdutos(new ArrayList<>());
         setValorTotal(0);
-    }    
+    }   
+    
+    public void AdicionarProduto(Produto produto){
+        this.AdicionarProduto(produto, 1);
+    }
     
     public void AdicionarProduto(Produto produto, int quantidade){
+                
+        for (ProdutoCarrinho item : produtos)
+            if (item.getProduto().getId() == produto.getId()){
+                item.adicionar();
+                return;
+            }
+        
         produtos.add(new ProdutoCarrinho(produto, quantidade));
     }
     
