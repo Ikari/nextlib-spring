@@ -6,6 +6,7 @@ body {
 }
 html{
     font-size: 13px;
+    background-color: blue; 
 }
 img{
     max-width: 100%;
@@ -15,4 +16,10 @@ p{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    [class*="col-"] {
+        width: 100%;
+    }
 }
