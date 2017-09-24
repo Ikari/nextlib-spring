@@ -5,26 +5,21 @@
  */
 package com.next.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
  * @author roger.roliveira
  */
-@Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Carrinho implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-    @ElementCollection
     private List<ProdutoCarrinho> produtos;
     private Cliente cliente;
     private double valorTotal;

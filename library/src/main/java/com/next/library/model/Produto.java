@@ -2,27 +2,22 @@ package com.next.library.model;
 
 import java.io.Serializable;
 import java.util.Base64;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
  * @author roger
  */
-@Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Produto implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     private String nome;
     private String descricao;
     private Double preco;
     private String ean;
-    @Lob
     private byte[] imagem;    
     
     public Produto(){        
@@ -125,7 +120,7 @@ public class Produto implements Serializable {
         this.imagem = imagem;
     }
     
-    public String getBase64Imagem(){
-        return Base64.getEncoder().encodeToString(imagem);
+    public String getBase64Imagem(){        
+        return imagem == null ? null : Base64.getEncoder().encodeToString(imagem);
     }
 }

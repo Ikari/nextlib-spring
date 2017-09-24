@@ -5,21 +5,18 @@
  */
 package com.next.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 /**
  *
  * @author roger.roliveira
  */
-@Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class ProdutoCarrinho implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     private Produto produto;
     private int quantidade;
