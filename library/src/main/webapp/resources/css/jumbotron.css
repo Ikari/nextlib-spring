@@ -4,6 +4,10 @@ body {
     padding-bottom: 20px;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+h5, h4, h3{
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 html{
     font-size: 13px;
     background-color: blue; 
