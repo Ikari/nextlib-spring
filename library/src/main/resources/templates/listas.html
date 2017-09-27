@@ -16,24 +16,24 @@
                                     <hr>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div th:each='produto : ${produtos}' class="col-xs-12 col-sm-6 col-md-4 ng-scope">
-
-                                    <div class="col-md-5 col-sm-4 col-xs-6">
-                                        <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" alt="Imagem de um livro" width="100%"> 
-                                    </div>
-                                    <div class="caption">
-                                        <div class="col-md-7 col-sm-8 col-xs-12">
-                                            <div style="overflow:hidden;text-overflow:ellipsiss; height: 8ch">
-                                                <h5 th:text='${produto.nome}'></h5>
-                                            </div>
-                                            <p style="overflow:hidden;text-overflow:'[...]'; height: 10ch" th:text='${produto.descricao}'></p>
-                                            <div style="overflow:hidden;text-overflow:clip; height: 12ch">
-                                                <h4 th:text='${produto.preco}'></h4>
-                                                <p><a href="#" class="btn btn-warning detalhe" th:attr="data-id=${produto.id}" role="button">Detalhe</a></p>
-                                            </div>
-                                        </div> 
-                                    </div>
+                                        <div class="col-md-5 col-sm-4 col-xs-6">
+                                            <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" alt="Imagem de um livro" width="100%"> 
+                                        </div>
+                                        <div class="caption">
+                                            <div class="col-md-7 col-sm-8 col-xs-12">
+                                                <div style="overflow:hidden;text-overflow:ellipsiss; height: 8ch">
+                                                    <h5 th:text='${produto.nome}'></h5>
+                                                </div>
+                                                <p style="overflow:hidden; height: 10ch" th:text='${produto.descricao}'></p>
+                                                <div style="overflow:hidden;text-overflow:clip; height: 12ch">
+                                                    <h4> R$ <span th:text='${produto.preco}'></span></h4>
+                                                    <p><a href="#" class="btn btn-warning detalhe" th:attr="data-id=${produto.id}" role="button">Detalhes</a></p>
+                                                </div>
+                                            </div> 
+                                        </div>
                                 </div>
                             </div>
                         </div>
