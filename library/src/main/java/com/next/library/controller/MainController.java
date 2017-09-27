@@ -63,6 +63,42 @@ public class MainController {
                         + "um rapaz de 16 anos, em uma jornada até uma ilha remota na costa do País de Gales.",
                         13.9,
                         IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/o-orfanato-da-srta-peregrine.jpg"))));
+        
+        _repository.save(
+                new Produto(
+                        4,
+                        "Animais fantasticos e onde habitam",
+                        "Inspirado no livro-texto de Hogwarts escrito pelo personagem Newt Scamander, Animais fantásticos e "
+                        + "onde habitam – O roteiro original é uma aventura nova e emocionante que apresenta uma variedade "
+                        + "de personagens e criaturas mágicas.",
+                        34.9,
+                        IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/animais-fantasticos-e-onde-habitam.jpg"))));
+/*
+        _repository.save(
+                new Produto(
+                        5,
+                        "Senhor das Sombras",
+                        "O segundo volume da nova série da Cassandra Clare, autora do grande sucesso Os Instrumentos Mortais. "
+                        + "A ensolarada Los Angeles pode ser um lugar sombrio na continuação de Dama da Meia-Noite."
+                        + " Emma Carstairs finalmente conseguiu vingar a morte dos pais e pensou que ficaria em paz."
+                        + " Mas isso não aconteceu. Dividida entre o amor que sente pelo seu parabatai Julian e a vontade "
+                        + "de protegê-lo das graves consequências que um relacionamento.",
+                        38.4,
+                        IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/senhor-das-sombras.jpg"))));
+
+        _repository.save(
+                new Produto(
+                        6,
+                        "Brasil, uma Biografia",
+                        "Com linguagem fluente, acesso a documentação inédita e profundo rigor na pesquisa, Lilia Moritz Schwarcz e "
+                        + "Heloisa Murgel Starling traçam um retrato de corpo inteiro do país, e mostram que o Brasil "
+                        + "bem merecia uma nova história. Aliando texto acessível e agradável, vasta documentação "
+                        + "original e rica iconografia, Lilia Moritz Schwarcz e Heloisa Starling propõem uma nova "
+                        + "(e pouco convencional) história do Brasil.",
+                        39.8,
+                        IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/brasil-uma-biografia.jpg"))));
+         */
         return "index";
+
     }
 }

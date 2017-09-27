@@ -7,7 +7,7 @@
         <div class="container">
             <div th:fragment="carrinho">                
                 <div class="col-xs-12 col-sm-3 col-md-3 ng-scope">
-                    <h2>Carrinho</h2>
+                    <h4>Carrinho</h4>
                     <hr/>
                     <form action="#" class="ng-valid ng-valid-min ng-valid-max ng-dirty ng-valid-number">
                         <div style="padding-left: 8px; padding-top: 8px" class="panel panel-default">
@@ -31,7 +31,16 @@
                                 <div class="col-md-7 col-xs-12">
                                     <h5 th:text='${item.produto.nome}'>Nome do Produto</h5>
                                     <h4 th:text='${item.produto.preco}'>R$65.00 </h4>
-                                    <h5 th:text='${item.quantidade}'></h5>                                        
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Qtd. 
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a th:text='${item.quantidade}'</a></li>
+                                        </ul>
+                                    </div>
+                                    <!--<h5 th:text='${item.quantidade}'></h5>  -->
                                 </div>
                             </div>
                         </div> 
