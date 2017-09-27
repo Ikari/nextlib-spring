@@ -20,7 +20,7 @@
                                 <div class="caption">
                                     <div class="col-md-8 col-sm-7 col-xs-12">
                                         <h2 th:text='${produto.nome}'></h2>
-                                        <h4 th:text='${produto.preco}'></h4>
+                                        <h4> R$ <span th:text='${produto.preco}'></span></h4>
                                         <p th:text='${produto.descricao}'></p>
                                         <p><a href="#" class="btn btn-warning adicionar" th:attr="data-id=${produto.id}" role="button">Adicionar ao Carrinho</a></p>
                                     </div>
