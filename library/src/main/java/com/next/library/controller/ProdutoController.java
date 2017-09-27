@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,7 +62,7 @@ public class ProdutoController {
         carrinho.AdicionarProduto(_repository.findOne(produto.getId()), 1);
         
         request.getSession().setAttribute("carrinho", carrinho);
-        
+                
         carrinho.getProdutos().forEach(p -> System.out.println(p.getProduto().getNome()));
         
         return "{}";
