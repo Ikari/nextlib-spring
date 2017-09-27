@@ -63,7 +63,7 @@ public class MainController {
                         + "um rapaz de 16 anos, em uma jornada até uma ilha remota na costa do País de Gales.",
                         13.9,
                         IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/o-orfanato-da-srta-peregrine.jpg"))));
-        
+
         _repository.save(
                 new Produto(
                         4,
@@ -73,7 +73,29 @@ public class MainController {
                         + "de personagens e criaturas mágicas.",
                         34.9,
                         IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/animais-fantasticos-e-onde-habitam.jpg"))));
-/*
+
+        _repository.save(
+                new Produto(
+                        5,
+                        "Senhor das Sombras",
+                        "A ensolarada Los Angeles pode ser um lugar sombrio na continuação de Dama da Meia-Noite,"
+                        + " de Cassandra Clare. Emma Carstairs finalmente conseguiu vingar a morte dos pais "
+                        + "e pensou que com isso estaria em paz. ",
+                        37.5,
+                        IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/senhor-das-sombras.jpg"))));
+
+        _repository.save(
+                new Produto(
+                        6,
+                        "Brasil, Uma Biografia",
+                        "Aliando texto acessível e agradável, vasta documentação original e rica iconografia,"
+                        + " Lilia Moritz Schwarcz e Heloísa Starling propõem uma nova (e pouco convencional) "
+                        + "história do Brasil.",
+                        41.9,
+                        IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/brasil-uma-biografia.jpg"))));
+
+        /*
+        
         _repository.save(
                 new Produto(
                         5,
