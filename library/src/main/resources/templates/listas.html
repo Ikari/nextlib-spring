@@ -18,7 +18,6 @@
                             </div>
 
                             <div class="row">
-
                                 <div th:each='produto : ${produtos}' class="col-xs-12 col-sm-6 col-md-4 ng-scope">
                                         <div class="col-md-5 col-sm-4 col-xs-6">
                                             <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" alt="Imagem de um livro" width="100%"> 
