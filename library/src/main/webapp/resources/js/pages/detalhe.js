@@ -13,11 +13,11 @@ $(function(){
             {
                 type: "POST",
                 contentType:"application/json",
-                url: "/adicionar-produto",
+                url: "/carrinho/adicionar",
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function(data){ 
-                    $("#content").load("/carrinho");
+                    $("#content").load("/carrinho/#");
                 },
                 error: function(e){ console.log(e); }
             }
