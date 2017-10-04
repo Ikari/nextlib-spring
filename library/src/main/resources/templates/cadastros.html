@@ -21,14 +21,14 @@
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
                                                     <span for="inputName1">Nome</span>
-                                                    <input type="text" th:field="*{nome}" class="form-control" id="inputName1" placeholder="Nome"/>
+                                                    <input maxlength="30" type="text" th:field="*{nome}" class="form-control" id="inputName1" placeholder="Nome"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
-                                                    <span for="inputNascimento">Data de Nascimento</span>
+                                                    <span maxlength="8"for="inputNascimento">Data de Nascimento</span>
                                                     <input type="text" th:field="*{dataNascimento}" class="form-control" id="inputNascimento" placeholder="DD/MM/AAAA"/>
                                                 </div>     
                                             </div>
@@ -41,7 +41,7 @@
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
                                                     <span for="inputCpf">CPF</span>
-                                                    <input type="text" th:field="*{cpf}" class="form-control" id="inputCpf" placeholder="CPF"/>
+                                                    <input maxlength="11" type="text" th:field="*{cpf}" class="form-control" id="inputCpf" placeholder="CPF"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,7 +49,7 @@
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
                                                     <span for="inputRg">RG</span>
-                                                    <input type="text" th:field="*{rg}" class="form-control" id="inputRg" placeholder="RG"/>
+                                                    <input maxlength="10"type="text" th:field="*{rg}" class="form-control" id="inputRg" placeholder="RG"/>
                                                 </div>     
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
                                                     <span for="inputName1">Nome</span>
-                                                    <input type="text" th:field="*{nome}" class="form-control" id="inputName2" placeholder="Nome" />
+                                                    <input maxlength="30" type="text" th:field="*{nome}" class="form-control" id="inputName2" placeholder="Nome" />
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
                                                     <span for="inputDescricao">Descrição</span>
-                                                    <input type="text" th:field="*{descricao}" class="form-control" id="inputDescricao" placeholder="Descrição" />
+                                                    <input maxlength="30" type="text" th:field="*{descricao}" class="form-control" id="inputDescricao" placeholder="Descrição" />
                                                 </div>                
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
                                                     <span for="inputPreco">Preço</span>
-                                                    <input type="text" th:field="*{preco}" class="form-control" id="inputPreco" placeholder="$" />
+                                                    <input maxlength="6" type="text" th:field="*{preco}" class="form-control" id="inputPreco" placeholder="$" />
                                                 </div>
                                             </div>
                                         </div>
@@ -113,7 +113,7 @@
                                             <div class="row">
                                                 <div class="col-md-11 col-xs-12">
                                                     <span for="inputEan">EAN</span>
-                                                    <input type="text" th:field="*{ean}" class="form-control" id="inputEan"/>
+                                                    <input maxlength="15" type="text" th:field="*{ean}" class="form-control" id="inputEan"/>
                                                 </div>                
                                             </div>
                                         </div>

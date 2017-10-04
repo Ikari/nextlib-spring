@@ -4,6 +4,26 @@ body {
     padding-bottom: 20px;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+h5, h4, h3{
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 html{
-    font-size: 14px;
+    font-size: 13px;
+    background-color: blue; 
+}
+img{
+    max-width: 100%;
+}
+p{
+    max-width: 15ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    [class*="col-"] {
+        max-width: 100%;
+    }
 }
