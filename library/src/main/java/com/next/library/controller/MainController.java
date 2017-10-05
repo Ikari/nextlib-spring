@@ -52,7 +52,7 @@ public class MainController {
         _repository.save(
                 new Produto(
                         3,
-                        "O Orfanato da Srta. Peregrine Para Crianças Peculiares",
+                        "O Orfanato da Srta. Peregrine",
                         "O orfanato da Srta. Peregrine para Crianças Peculiares é um romance que "
                         + "mistura ficção e fotografia. A história começa com uma tragédia familiar que lança Jacob, "
                         + "um rapaz de 16 anos, em uma jornada até uma ilha remota na costa do País de Gales.",
