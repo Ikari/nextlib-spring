@@ -23,7 +23,7 @@
                                     <!--<div class="thumbnail">-->
                                     <div class="bs-example" data-example-id="thumbnails-with-custom-content"> 
                                         <div class="col-xs-12 col-sm-6 col-md-6">
-                                            <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" alt="Imagem de um livro" style="height: 100%; width: 100%; display: block; padding-top:10px;"> 
+                                            <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" style="height: 100%; width: 100%; display: block; padding-top:10px;" th:alt="${produto.alt}" th:title="${produto.titulo}"> 
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <div class="caption">

@@ -1,4 +1,4 @@
-package com.next.library.model;
+    package com.next.library.model;
 
 import java.io.Serializable;
 import java.util.Base64;
@@ -14,33 +14,45 @@ import javax.persistence.Lob;
  */
 @Entity
 public class Produto implements Serializable {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
     private String descricao;
     private Double preco;
     private String ean;
+    private String alt;
+    private String titulo; 
+
     @Lob
-    private byte[] imagem;    
-    
-    public Produto(){        
-    }    
-    
-    public Produto(int id, String nome, String descricao, Double preco, byte[] imagem){
+    private byte[] imagem;
+
+    public Produto() {
+    }
+
+    public Produto(int id, String nome, String descricao, String alt, String titulo, Double preco, byte[] imagem) {
         setId(id);
         setNome(nome);
         setDescricao(descricao);
         setPreco(preco);
         setImagem(imagem);
-    }
-    
-    public Produto(int id, String nome, String descricao, Double preco, byte[] imagem, String ean){
-        this(id, nome, descricao, preco, imagem);
-        setEan(ean);
+        setAlt(alt);
+        setTitulo(titulo);
     }
 
+    public Produto(int id, String nome, String descricao, String alt, String titulo, Double preco, byte[] imagem, String ean) {
+        this(id, nome, descricao, alt, titulo,preco, imagem);
+        setEan(ean);
+    }
+    
+     public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
     /**
      * @return the id
      */
@@ -81,6 +93,15 @@ public class Produto implements Serializable {
      */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    
+    
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
     }
 
     /**
@@ -124,8 +145,8 @@ public class Produto implements Serializable {
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
     }
-    
-    public String getBase64Imagem(){
+
+    public String getBase64Imagem() {
         return Base64.getEncoder().encodeToString(imagem);
     }
 }

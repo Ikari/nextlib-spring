@@ -34,10 +34,9 @@
                                     <div th:each='item : ${carrinho.produtos}'> 
                                         <div scope="row">
                                             <div class="col-xs-12 col-sm-12 col-md-3">
-                                                <img style="padding-top:10px; padding-bottom: 10px; "th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" alt="Imagem de um livro" width="50%" >
+                                                <img style="padding-top:10px; padding-bottom: 10px; "th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="50%" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}">            
                                             </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-9">
-                                                <h4 th:text='${item.produto.nome}'></h4>
+                                                 <h4 th:text='${item.produto.nome}'></h4>
                                                 <h4> R$ <span th:text='${item.produto.preco}'></span></h4> 
                                                 <h4>
                                                     <span class="label label-default">
