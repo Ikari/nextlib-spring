@@ -26,42 +26,42 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author roger.roliveira
  */
-@RunWith(SpringRunner.class)
-@WebMvcTest(ProdutoController.class)
-public class ProdutoControllerTest {
-    
-    @Autowired
-    private MockMvc mock;
-    
-    public ProdutoControllerTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    @Test
-    public void validarCadastroProduto() {
-        Produto produto = new Produto();
-        produto.setNome("ProdutoTeste");
-        produto.setPreco(10.00);
-        produto.setEan("000111");
-        
-//        mock.perform(
-//                post("/produtos/cadastrar")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .andExpect(status().isOk()));
-    }
-}
+//@RunWith(SpringRunner.class)
+//@WebMvcTest(ProdutoController.class)
+//public class ProdutoControllerTest {
+//    
+//    @Autowired
+//    private MockMvc mock;
+//    
+//    public ProdutoControllerTest() {
+//    }
+//    
+//    @BeforeClass
+//    public static void setUpClass() {
+//    }
+//    
+//    @AfterClass
+//    public static void tearDownClass() {
+//    }
+//    
+//    @Before
+//    public void setUp() {
+//    }
+//    
+//    @After
+//    public void tearDown() {
+//    }
+//
+//    @Test
+//    public void validarCadastroProduto() {
+//        Produto produto = new Produto();
+//        produto.setNome("ProdutoTeste");
+//        produto.setPreco(10.00);
+//        produto.setEan("000111");
+//        
+////        mock.perform(
+////                post("/produtos/cadastrar")
+////                .contentType(MediaType.APPLICATION_JSON)
+////                .andExpect(status().isOk()));
+//    }
+//}

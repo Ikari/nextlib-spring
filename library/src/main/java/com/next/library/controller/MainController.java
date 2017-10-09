@@ -28,7 +28,7 @@ public class MainController {
     public String index(HttpServletRequest request) throws IOException, URISyntaxException {
 
         request.getSession().setAttribute("carrinho", new Carrinho());
-
+/*  
         _repository.save(
                 new Produto(
                         1,
@@ -89,7 +89,7 @@ public class MainController {
                         41.9,
                         IOUtils.toByteArray(ClassLoader.class.getResourceAsStream("/images/brasil-uma-biografia.jpg"))));
 
-        /*        
+              
         _repository.save(
                 new Produto(
                         5,
