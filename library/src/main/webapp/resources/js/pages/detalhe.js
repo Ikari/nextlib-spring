@@ -17,6 +17,7 @@ $(function(){
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function(data){ 
+                    console.log(data);
                     $("#content").load("/carrinho/#");
                 },
                 error: function(e){ console.log(e); }

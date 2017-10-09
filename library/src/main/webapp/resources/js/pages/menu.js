@@ -9,7 +9,7 @@ $(function(){
    
     this.cliente = function(){ $("#content").load("/cliente"); };    
     this.produto = function(){ $("#content").load("/produtos/exibir"); };
-    this.produtos = function(){ $("#content").load("/produtos/#"); };
+    this.produtos = function(){ $("#content").load("/produtos/#"); };   
     this.carrinho = function(){ $("#content").load("/carrinho/#"); };
         
     this.init();    

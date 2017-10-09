@@ -18,7 +18,9 @@ public class Produto implements Serializable {
     private String descricao;
     private Double preco;
     private String ean;
-    private byte[] imagem;    
+    private byte[] imagem;
+    private String alt;
+    private String titulo; 
     
     public Produto(){        
     }    
@@ -122,5 +124,33 @@ public class Produto implements Serializable {
     
     public String getBase64Imagem(){        
         return imagem == null ? null : Base64.getEncoder().encodeToString(imagem);
+    }
+
+    /**
+     * @return the alt
+     */
+    public String getAlt() {
+        return alt;
+    }
+
+    /**
+     * @param alt the alt to set
+     */
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
+    /**
+     * @return the titulo
+     */
+    public String getTitulo() {
+        return titulo;
+    }
+
+    /**
+     * @param titulo the titulo to set
+     */
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }
