@@ -13,5 +13,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author roger
  */
 public interface IClienteRepository extends MongoRepository<Cliente, Integer> {
-    
+    public Cliente findClienteByEmail(String email);
+    public Cliente findClienteByUsername(String username);
 }

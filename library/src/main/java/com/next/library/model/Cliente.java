@@ -20,22 +20,14 @@ public class Cliente implements Serializable {
     private String email;    
     private String nome;
     private String cpf;
-    private String sexo;
-    private String dataNascimento;
-    private List<String> telefones;
+    private List<Regra> regras;
     
     public Cliente(){ }
     
-    public Cliente(String username, String password){
+    public Cliente(String username, String password, String email){
         this.username = username;
         this.password = password;
-    }
-    
-    public Cliente(int id, String nome, String dataNascimento, String cpf, String rg){
-        setId(id);
-        setNome(nome);
-        setDataNascimento(dataNascimento);
-        setCpf(cpf);
+        this.email = email;
     }
 
     /**
@@ -64,20 +56,6 @@ public class Cliente implements Serializable {
      */
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    /**
-     * @return the dataNascimento
-     */
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    /**
-     * @param dataNascimento the dataNascimento to set
-     */
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     /**
@@ -137,30 +115,16 @@ public class Cliente implements Serializable {
     }
 
     /**
-     * @return the sexo
+     * @return the regras
      */
-    public String getSexo() {
-        return sexo;
+    public List<Regra> getRegras() {
+        return regras;
     }
 
     /**
-     * @param sexo the sexo to set
+     * @param regras the regras to set
      */
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    /**
-     * @return the telefones
-     */
-    public List<String> getTelefones() {
-        return telefones;
-    }
-
-    /**
-     * @param telefones the telefones to set
-     */
-    public void setTelefones(List<String> telefones) {
-        this.telefones = telefones;
+    public void setRegras(List<Regra> regras) {
+        this.regras = regras;
     }
 }

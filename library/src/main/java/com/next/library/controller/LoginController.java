@@ -30,5 +30,6 @@ public class LoginController {
     public ModelAndView loginError(){        
         
         return new ModelAndView("/login/login-error");        
-    }
+    }   
+    
 }

@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -25,24 +27,14 @@ public class ProdutoController {
         _repository = repository;
     }
     
-    @RequestMapping(value="/", method=RequestMethod.GET)
-    public String listar(Model model){
-        
-        Iterable<Produto> produtos = _repository.findAll();
-        
-        model.addAttribute("produtos", produtos);
-        
-        return "listas :: produto";
+    @RequestMapping
+    public ModelAndView listar(){        
+        return new ModelAndView("produto/produtos").addObject("produtos", _repository.findAll());
     }
     
-    @RequestMapping(value="/detalhe", method=RequestMethod.GET)
-    public String detalhar(@RequestParam int id, Model model){
-        
-        Produto produtos = _repository.findOne(id);
-                
-        model.addAttribute("produtos", produtos);
-        
-        return "detalhes :: produto";
+    @RequestMapping("/{id}")
+    public ModelAndView detalhar(@PathVariable("id") int id){        
+        return new ModelAndView("produto/detalhes").addObject("produto", _repository.findOne(id));
     }
        
     

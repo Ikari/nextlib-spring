@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{shared/main}">
     <head>
-        <title>Listagens</title>
-        <link href="../../webapp/resources/css/jumbotron.css" rel="stylesheet" type="text/css"/>
+        <title>Produtos</title>
     </head>
     <body>
-        <div th:fragment="produto">                
+        <div layout:fragment="conteudo">                
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -33,7 +32,7 @@
                                                 <p style="overflow:hidden; height: 8ch" th:text='${produto.descricao}'></p>
                                                 <div style="overflow:hidden;text-overflow:clip; height: 12ch">
                                                     <h4> R$ <span th:text='${produto.preco}'></span></h4>
-                                                    <p><a style="width: 100%;"href="#" class="btn btn-warning detalhe" th:attr="data-id=${produto.id}" role="button">Detalhes</a></p>
+                                                    <p><a style="width: 100%;"href="#" th:href="@{/produtos/{id}(id=${produto.id})}" class="btn btn-warning detalhe" role="button">Detalhes</a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -44,7 +43,7 @@
                     </div>
                 </div>
             </div>
-        <script src="../../resources/js/pages/produtos.js" type="text/javascript"></script>       
+        <!--<script src="../../resources/js/pages/produtos.js" type="text/javascript"></script>-->
         </div> 
     </body>
 </html>
