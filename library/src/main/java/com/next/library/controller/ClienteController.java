@@ -25,7 +25,7 @@ public class ClienteController {
     @RequestMapping(value="/cadastrarCliente", method=RequestMethod.POST)
     public String cadastrarCliente(@ModelAttribute(value="cliente") Cliente cliente){
         
-        System.out.printf("CLIENTE /n [nome = %s] /n [nascimento = %s] /n [cpf = %s] /n [rg = %s] /n", cliente.getNome(), cliente.getDataNascimento(), cliente.getCpf(), cliente.getRg());
+        
                
         
         return "cadastros :: cliente";

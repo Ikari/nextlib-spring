@@ -3,6 +3,7 @@ package com.next.library.model;
 import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 
 /**
  *
@@ -13,13 +14,21 @@ public class Cliente implements Serializable {
     
     @Id
     private int id;
-    private String nome;
-    private String dataNascimento;    
-    private String cpf;
-    private String rg;
     
-    public Cliente(){
-        
+    private String username;
+    private String password;    
+    private String email;    
+    private String nome;
+    private String cpf;
+    private String sexo;
+    private String dataNascimento;
+    private List<String> telefones;
+    
+    public Cliente(){ }
+    
+    public Cliente(String username, String password){
+        this.username = username;
+        this.password = password;
     }
     
     public Cliente(int id, String nome, String dataNascimento, String cpf, String rg){
@@ -27,7 +36,6 @@ public class Cliente implements Serializable {
         setNome(nome);
         setDataNascimento(dataNascimento);
         setCpf(cpf);
-        setRg(rg);
     }
 
     /**
@@ -87,16 +95,72 @@ public class Cliente implements Serializable {
     }
 
     /**
-     * @return the rg
+     * @return the username
      */
-    public String getRg() {
-        return rg;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param rg the rg to set
+     * @param username the username to set
      */
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the sexo
+     */
+    public String getSexo() {
+        return sexo;
+    }
+
+    /**
+     * @param sexo the sexo to set
+     */
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    /**
+     * @return the telefones
+     */
+    public List<String> getTelefones() {
+        return telefones;
+    }
+
+    /**
+     * @param telefones the telefones to set
+     */
+    public void setTelefones(List<String> telefones) {
+        this.telefones = telefones;
     }
 }

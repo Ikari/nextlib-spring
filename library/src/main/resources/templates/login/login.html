@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="container">        
+            <form th:action="@{/login}" method="POST" class="form-signin">
+                
+                <h3 class="form-signin-heading">Bem vindo!</h3>
+                <br />
+                <input type="text" id="username" name="username" th:placeholder="username" class="form-control">
+                <input type="text" id="password" name="password" th:placeholder="password" class="form-control">
+                <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Login" type="submit" th:text="Login"></button>
+                
+            </form>
+        </div>
+    </body>
+</html>
