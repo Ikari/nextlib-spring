@@ -25,12 +25,12 @@ public class Carrinho implements Serializable {
     private double valorTotal;
 
     public Carrinho(){
-        setProdutos(new ArrayList<>());
-        setValorTotal(0);
+        this.produtos = new ArrayList<>();
+        this.valorTotal = 0;
     }   
     
     public void AdicionarProduto(Produto produto){
-        this.AdicionarProduto(produto, 1);
+        this.AdicionarProduto(produto, 1);        
     }
     
     public void AdicionarProduto(Produto produto, int quantidade){
@@ -41,7 +41,13 @@ public class Carrinho implements Serializable {
                 return;
             }
         
-        produtos.add(new ProdutoCarrinho(produto, quantidade));
+        produtos.add(new ProdutoCarrinho(produto, quantidade));        
+        recalcularTotal();
+    }
+    
+    private void recalcularTotal(){
+        valorTotal = 0;
+        produtos.forEach(p -> valorTotal += (p.getProduto().getPreco() * p.getQuantidade()));
     }
     
     /**

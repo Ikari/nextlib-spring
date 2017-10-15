@@ -14,17 +14,20 @@
                             </div>
                         </div>
                         <div class="col-xs-12 ol-sm-6 col-md-12 ng-scope">
-                            <div class="col-md-4 col-sm-5 col-xs-8">
-                                <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" width="75%" th:alt="${produto.alt}" th:title="${produto.titulo}">
-                            </div>
-                            <div class="caption">
-                                <div class="col-md-8 col-sm-7 col-xs-12">
-                                    <h3 th:text='${produto.nome}'></h3>
-                                    <h4> R$ <span th:text='${produto.preco}'></span></h4>
-                                    <p th:text='${produto.descricao}'></p>
-                                    <p><a href="#" class="btn btn-warning adicionar" th:attr="data-id=${produto.id}" role="button">Adicionar ao Carrinho</a></p>
+                            <form action="#" th:action="@{/carrinho/adicionar}" method="POST">
+                                <input type="hidden" name="id" th:value="${produto.id}"/>
+                                <div class="col-md-4 col-sm-5 col-xs-8">
+                                    <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" width="75%" th:alt="${produto.alt}" th:title="${produto.titulo}">
                                 </div>
-                            </div>
+                                <div class="caption">
+                                    <div class="col-md-8 col-sm-7 col-xs-12">                                    
+                                        <h3 th:text='${produto.nome}'></h3>
+                                        <h4><span th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
+                                        <p th:text='${produto.descricao}'></p>
+                                        <p><a href="#" class="btn btn-warning adicionar" onclick="document.forms[0].submit()" role="button">Adicionar ao Carrinho</a></p>
+                                    </div>
+                                </div>                                        
+                            </form>                            
                         </div>
                     </div>
                 </div>     

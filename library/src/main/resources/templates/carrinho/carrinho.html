@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{shared/main}">
     <head>
         <title>Carrinho</title>
     </head>
     <body>
-        <div class="container">
-            <div th:fragment="carrinho">                
+        <div layout:fragment="conteudo">
+            <div class="container">                
                 <div class="col-xs-12 col-sm-3 col-md-3 ng-scope">        
                     <form action="#" class="ng-valid ng-valid-min ng-valid-max ng-dirty ng-valid-number">
                         <div class="panel panel-">
@@ -13,7 +13,7 @@
                                 <h4 class="panel-title">Carrinho</h4>
                             </div>
                             <div class="panel-body">
-                                <h4><label>Total: R$100,00</label></h4> 
+                                <h4><label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span></h4> 
                                 <a style="width: 100%;" href="#" class="btn btn-warning">Finalizar Compra</a>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                                 <img style="padding-top:10px; padding-bottom: 10px; "th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="50%" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}">            
                                             </div>
                                                  <h4 th:text='${item.produto.nome}'></h4>
-                                                <h4> R$ <span th:text='${item.produto.preco}'></span></h4> 
+                                                <h4><span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span></h4> 
                                                 <h4>
                                                     <span class="label label-default">
                                                         Quantidade. <span th:text='${item.quantidade}'</span>
@@ -52,29 +52,6 @@
                             </table>
                         </div>
                     </div>
-                    <!--
-                    <div class="col-md-3 col-sm-6 col-xs-8">
-                        <img style="padding-top:20px; "th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" alt="Imagem de um livro" width="100%">
-                    </div>
-                    <div class="col-md-12 col-sm-8 col-xs-12">
-                        <div class="caption">
-                            <div class="col-md-9 col-xs-12">
-                                <h4 style="padding-top:20px;" th:text='${item.produto.nome}'></h4>
-                                <div class="col-xs-12 col-md-8 col-sm-7" >
-                                    <div class="col-xs-8 col-md-6 col-sm-7">
-                                        <h4> R$ <span th:text='${item.produto.preco}'></span></h4>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <h4><span class="label label-default">
-                                                Qtd: <span th:text='${item.quantidade}'</span>
-                                            </span></h4>
-                    <!--<h5 th:text='${item.quantidade}'></h5>  
-                </div>
-            </div>
-        </div> 
-    </div>
-</div>   
-                    -->
                 </div>
             </div>
         </div>

@@ -3,14 +3,17 @@ package com.next.library.controller;
 import com.next.library.model.Carrinho;
 import com.next.library.model.Produto;
 import com.next.library.repository.IProdutoRepository;
+import com.next.library.service.CarrinhoService;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -21,35 +24,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CarrinhoController {
     
     @Autowired
-    private IProdutoRepository _repository;
-        
-    @RequestMapping(value="/", method=RequestMethod.GET)
-    public String carrinho(HttpServletRequest request, Model model){
-        
-        Carrinho carrinho = (Carrinho)request.getSession().getAttribute("carrinho");
-        
-        if (carrinho == null)
-            carrinho = new Carrinho();
-        
-        model.addAttribute("carrinho", carrinho);
-        
-        return "carrinho :: carrinho";
+    CarrinhoService service;    
+            
+    @RequestMapping
+    public ModelAndView carrinho(){        
+        return new ModelAndView("carrinho/carrinho").addObject("carrinho", service.obterCarrinho());
     }
     
     @RequestMapping(value="/adicionar", method=RequestMethod.POST)    
-    public @ResponseBody String adicionarProdutoAoCarrinho(@RequestBody Produto produto, HttpServletRequest request, Model model){
+    public ModelAndView adicionarProduto(
+            @ModelAttribute("produto") @Valid Produto produto,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes){
         
-        Carrinho carrinho = (Carrinho)request.getSession().getAttribute("carrinho");
-        
-        if (carrinho == null)
-            carrinho = new Carrinho();
-        
-        carrinho.AdicionarProduto(_repository.findOne(produto.getId()), 1);
-        
-        request.getSession().setAttribute("carrinho", carrinho);
+        if (bindingResult.hasErrors())
+            return new ModelAndView("redirect:/produtos");
                 
-        carrinho.getProdutos().forEach(p -> System.out.println(p.getProduto().getNome()));
+        if (produto.getId() == 0)
+            return new ModelAndView("redirect:/carrinho");
+                
+        service.adicionarProduto(produto.getId(), 1);
         
-        return "{}";
+        return new ModelAndView("redirect:/carrinho");
     }
 }

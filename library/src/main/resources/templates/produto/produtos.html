@@ -31,7 +31,7 @@
                                                 </div>
                                                 <p style="overflow:hidden; height: 8ch" th:text='${produto.descricao}'></p>
                                                 <div style="overflow:hidden;text-overflow:clip; height: 12ch">
-                                                    <h4> R$ <span th:text='${produto.preco}'></span></h4>
+                                                    <h4><span th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
                                                     <p><a style="width: 100%;"href="#" th:href="@{/produtos/{id}(id=${produto.id})}" class="btn btn-warning detalhe" role="button">Detalhes</a></p>
                                                 </div>
                                             </div>
