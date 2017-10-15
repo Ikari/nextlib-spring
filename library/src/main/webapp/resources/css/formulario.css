@@ -1,0 +1,8 @@
+.formulario input,
+.formulario button {
+    margin-bottom: 10px;
+}
+
+.formulario.login{
+    max-width: 300px;
+}
