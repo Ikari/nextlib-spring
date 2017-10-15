@@ -4,6 +4,9 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  *
@@ -11,16 +14,15 @@ import java.util.List;
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Cliente implements Serializable {
-    
-    @Id
-    private int id;
+        
+    private @Id ObjectId id;
     
     private String username;
     private String password;    
-    private String email;    
-    private String nome;
-    private String cpf;
-    private List<Regra> regras;
+    private @Indexed(unique=true) String email;    
+    private String nome;    
+    private @Indexed(unique=true) String cpf;    
+    private @DBRef List<Regra> regras;
     
     public Cliente(){ }
     
@@ -33,15 +35,8 @@ public class Cliente implements Serializable {
     /**
      * @return the id
      */
-    public int getId() {
+    public ObjectId getId() {
         return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
     }
 
     /**

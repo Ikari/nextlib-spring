@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Cadastro de Usuário</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <form th:action="@{/login/cadastrar}" method="POST" class="form-signin">
+                    <h3 class="form-signin-heading">Cadastro de usuário</h3>
+                    <br />
+                    <input type="text" id="email" name="email" th:placeholder="e-mail" class="form-control">
+                    <input type="text" id="username" name="username" th:placeholder="usuário" class="form-control">
+                    <input type="password" id="password" name="password" th:placeholder="senha" class="form-control">
+                    <input type="text" id="cpf" name="cpf" th:placeholder="CPF" class="form-control">
+                    <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Cadastrar" type="submit" th:text="Cadastrar"></button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
