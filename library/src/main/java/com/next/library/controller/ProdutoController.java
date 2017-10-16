@@ -2,6 +2,7 @@ package com.next.library.controller;
 
 import com.next.library.model.Produto;
 import com.next.library.repository.IProdutoRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,7 @@ public class ProdutoController {
     }
     
     @RequestMapping("/{id}")
-    public ModelAndView detalhar(@PathVariable("id") int id){        
+    public ModelAndView detalhar(@PathVariable("id") ObjectId id){        
         return new ModelAndView("produto/detalhes").addObject("produto", _repository.findOne(id));
     }
        

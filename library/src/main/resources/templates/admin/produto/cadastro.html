@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Cadastro de Produto</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container formulario login">
+                <h3 class="form-signin-heading">Cadastro de produto</h3>
+                <br />
+                <div class="alert alert-success" th:if="${msgSucesso != null}">
+                    <h2 th:text="${msgSucesso}"></h2>
+                </div>
+                <div class="alert alert-danger" th:if="${msgErro != null}">
+                    <h2 th:text="${msgErro}"></h2>
+                </div>
+                <form th:action="@{/admin/produto/cadastrar}" th:object="${produto}" method="POST" class="form-signin" enctype="multipart/form-data" novalidate>
+                    <input type="text" name="nome" th:field="*{nome}" th:placeholder="NOME" class="form-control" required />
+                    <textarea type="text" name="descricao" th:field='*{descricao}' th:placeholder="DESCRIÇÃO" class="form-control" style="height: 200px;" required></textarea>
+                    <input type="text" name="preco" th:field="*{preco}" th:placeholder="PREÇO" class="form-control" required/>
+                    <input type="file" name="arquivo" th:placeholder="IMAGEM" class="form-control" required/>
+                    <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Salvar" type="submit" th:text="Salvar"></button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

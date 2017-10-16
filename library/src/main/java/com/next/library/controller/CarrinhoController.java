@@ -1,10 +1,7 @@
 package com.next.library.controller;
 
-import com.next.library.model.Carrinho;
 import com.next.library.model.Produto;
-import com.next.library.repository.IProdutoRepository;
 import com.next.library.service.CarrinhoService;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,7 +37,7 @@ public class CarrinhoController {
         if (bindingResult.hasErrors())
             return new ModelAndView("redirect:/produtos");
                 
-        if (produto.getId() == 0)
+        if (produto.getId() == null)
             return new ModelAndView("redirect:/carrinho");
                 
         service.adicionarProduto(produto.getId(), 1);

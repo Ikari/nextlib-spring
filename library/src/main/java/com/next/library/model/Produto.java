@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Base64;
 import org.springframework.data.annotation.Id;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -12,8 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Produto implements Serializable {
     
-    @Id
-    private int id;
+    @Id private ObjectId id;
     private String nome;
     private String descricao;
     private Double preco;
@@ -22,33 +22,17 @@ public class Produto implements Serializable {
     private String alt;
     private String titulo; 
     
-    public Produto(){        
-    }    
-    
-    public Produto(int id, String nome, String descricao, Double preco, byte[] imagem){
-        setId(id);
-        setNome(nome);
-        setDescricao(descricao);
-        setPreco(preco);
-        setImagem(imagem);
-    }
-    
-    public Produto(int id, String nome, String descricao, Double preco, byte[] imagem, String ean){
-        this(id, nome, descricao, preco, imagem);
-        setEan(ean);
-    }
-
     /**
      * @return the id
      */
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
-
+    
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

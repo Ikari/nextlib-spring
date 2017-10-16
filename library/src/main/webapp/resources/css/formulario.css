@@ -1,5 +1,6 @@
 .formulario input,
-.formulario button {
+.formulario button,
+.formulario textarea {
     margin-bottom: 10px;
 }
 

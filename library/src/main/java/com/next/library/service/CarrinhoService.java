@@ -4,6 +4,7 @@ import com.next.library.model.Carrinho;
 import com.next.library.model.Produto;
 import com.next.library.repository.IProdutoRepository;
 import javax.servlet.http.HttpServletRequest;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -38,7 +39,7 @@ public class CarrinhoService {
         return carrinho == null ? criarCarrinho() : carrinho;
     }
     
-    public Carrinho adicionarProduto(int id, int quantidade){
+    public Carrinho adicionarProduto(ObjectId id, int quantidade){
         
         Produto produto = _repository.findOne(id);
         
