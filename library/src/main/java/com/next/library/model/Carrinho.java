@@ -36,7 +36,7 @@ public class Carrinho implements Serializable {
     public void AdicionarProduto(Produto produto, int quantidade){
                 
         for (ProdutoCarrinho item : produtos)
-            if (item.getProduto().getId() == produto.getId()){
+            if (item.getProduto().getId().equals(produto.getId())) {
                 item.adicionar();
                 return;
             }
