@@ -79,4 +79,10 @@ public class ProdutoCarrinho implements Serializable {
     public int adicionar(){
         return this.quantidade++;
     }
+    
+    @Override
+    public boolean equals(Object other){
+        Produto otherProduct = (Produto)other;        
+        return this.produto.getId().equals(otherProduct.getId());
+    } 
 }

@@ -43,7 +43,7 @@
                                                         Quantidade. <span th:text='${item.quantidade}'</span>
                                                     </span>
                                                 </h4>
-                                                <a href="#" class="btn btn-warning">Remover</a>
+                                                <a href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}" class="btn btn-warning">Remover</a>
                                                 <hr>
                                             </div>
                                         </div>                                    

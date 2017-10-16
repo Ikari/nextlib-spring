@@ -29,11 +29,11 @@ public class Carrinho implements Serializable {
         this.valorTotal = 0;
     }   
     
-    public void AdicionarProduto(Produto produto){
-        this.AdicionarProduto(produto, 1);        
+    public void adicionarProduto(Produto produto){
+        this.adicionarProduto(produto, 1);        
     }
     
-    public void AdicionarProduto(Produto produto, int quantidade){
+    public void adicionarProduto(Produto produto, int quantidade){
                 
         for (ProdutoCarrinho item : produtos)
             if (item.getProduto().getId().equals(produto.getId())) {
@@ -43,6 +43,11 @@ public class Carrinho implements Serializable {
         
         produtos.add(new ProdutoCarrinho(produto, quantidade));        
         recalcularTotal();
+    }
+    
+    public void removerProduto(Produto produto){
+        if (produtos.contains(produto))
+            produtos.remove(produto);
     }
     
     private void recalcularTotal(){

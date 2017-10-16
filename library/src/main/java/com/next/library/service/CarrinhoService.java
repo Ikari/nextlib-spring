@@ -49,8 +49,17 @@ public class CarrinhoService {
     public Carrinho adicionarProduto(Produto produto, int quantidade){
         
         Carrinho carrinho = obterCarrinho();
-        carrinho.AdicionarProduto(produto, quantidade);
+        carrinho.adicionarProduto(produto, quantidade);
         _request.getSession().setAttribute("carrinho", carrinho);
+        
+        return carrinho;
+    }
+    
+    public Carrinho removerProduto(ObjectId produtoId){
+        
+        Carrinho carrinho = obterCarrinho();
+        carrinho.removerProduto(_repository.findOne(produtoId));
+        _request.getSession().setAttribute("carrinho", carrinho);                
         
         return carrinho;
     }
