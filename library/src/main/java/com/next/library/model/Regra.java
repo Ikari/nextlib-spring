@@ -1,6 +1,7 @@
 package com.next.library.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -11,8 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Regra implements GrantedAuthority {
     
-    @Id
-    private int id;
+    @Id private ObjectId id;
     private String regra;
 
     public Regra(String regra){
@@ -22,14 +22,14 @@ public class Regra implements GrantedAuthority {
     /**
      * @return the id
      */
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
