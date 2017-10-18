@@ -40,7 +40,8 @@ public class AdminController {
            @ModelAttribute("produto") @Valid Produto produto,            
            BindingResult binding,
            RedirectAttributes attributes,
-           @RequestParam("arquivo") MultipartFile arquivo
+           @RequestParam("arquivo") MultipartFile arquivo,
+           @RequestParam("thumb") MultipartFile thumb
            ){        
         
         if (arquivo.isEmpty()){
@@ -52,7 +53,8 @@ public class AdminController {
             return new ModelAndView("/admin/produto/cadastro");
         
         try {            
-            produto.setImagem(arquivo.getBytes());            
+            produto.setImagem(arquivo.getBytes());
+            produto.setThumbnail(thumb.getBytes());
             produtoRepository.save(produto);
         }
         catch(IOException ex){

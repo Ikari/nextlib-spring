@@ -9,5 +9,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author roger
  */
 public interface IProdutoRepository extends MongoRepository<Produto, ObjectId> {
-    
 }

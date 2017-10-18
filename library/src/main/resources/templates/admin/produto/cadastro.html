@@ -18,6 +18,7 @@
                     <input type="text" name="nome" th:field="*{nome}" th:placeholder="NOME" class="form-control" required />
                     <textarea type="text" name="descricao" th:field='*{descricao}' th:placeholder="DESCRIÇÃO" class="form-control" style="height: 200px;" required></textarea>
                     <input type="text" name="preco" th:field="*{preco}" th:placeholder="PREÇO" class="form-control" required/>
+                    <input type="file" name="thumb" th:placeholder="THUMBNAIL" class="form-control" required/>
                     <input type="file" name="arquivo" th:placeholder="IMAGEM" class="form-control" required/>
                     <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Salvar" type="submit" th:text="Salvar"></button>
                 </form>

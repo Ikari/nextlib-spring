@@ -1,7 +1,9 @@
 package com.next.library.controller;
 
 import com.next.library.model.Produto;
+import com.next.library.repository.IProdutoExcertpRepository;
 import com.next.library.repository.IProdutoRepository;
+import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/produtos")
 public class ProdutoController {
     
-    @Autowired
-    private IProdutoRepository _repository;
+    @Autowired private IProdutoRepository _repository;
+    @Autowired private IProdutoExcertpRepository _repositoryDto;
         
     @RequestMapping
-    public ModelAndView listar(){        
-        return new ModelAndView("produto/produtos").addObject("produtos", _repository.findAll());
+    public ModelAndView listar(){
+        return new ModelAndView("produto/produtos").addObject("produtos", _repositoryDto.findAll());
     }
     
     @RequestMapping("/{id}")
