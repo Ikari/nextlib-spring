@@ -15,6 +15,7 @@
                     <h2 th:text="${msgErro}"></h2>
                 </div>
                 <form th:action="@{/admin/produto/cadastrar}" th:object="${produto}" method="POST" class="form-signin" enctype="multipart/form-data" novalidate>
+                    <input type="hidden" name="id" th:field="*{id}"/>
                     <input type="text" name="nome" th:field="*{nome}" th:placeholder="NOME" class="form-control" required />
                     <textarea type="text" name="descricao" th:field='*{descricao}' th:placeholder="DESCRIÇÃO" class="form-control" style="height: 200px;" required></textarea>
                     <input type="text" name="preco" th:field="*{preco}" th:placeholder="PREÇO" class="form-control" required/>
