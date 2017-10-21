@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html layout:decorate="~{checkout/checkout}">
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo-checkout">
+            <div class="container">
+                <div class="col-xs-12 col-sm-9" id="endereco">
+                    <div class="row">
+                        <span th:text="${pedido.endereco}"></span>
+                    </div>
+                </div>                
+                <div class="col-xs-12 col-sm-9" id="endereco">
+                    <div class="row">
+                        <span th:text="${pedido.pagamento}"></span>
+                    </div>
+                </div>
+                <form th:action="@{/checkout/pagamento}" th:object="${cartao}" method="POST" class="form-signin" novalidate>
+                    <div class="col-xs-12 col-sm-9">
+                        <div class="row">
+                            <input type="submit" class="form-control">Salvar</input>
+                        </div>
+                    </div>    
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

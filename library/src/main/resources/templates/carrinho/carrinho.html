@@ -7,17 +7,15 @@
         <div layout:fragment="conteudo">
             <div class="container">                
                 <div class="col-xs-12 col-sm-3 col-md-3 ng-scope">        
-                    <form action="#" class="ng-valid ng-valid-min ng-valid-max ng-dirty ng-valid-number">
-                        <div class="panel panel-">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Carrinho</h4>
-                            </div>
-                            <div class="panel-body">
-                                <h4><label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span></h4> 
-                                <a style="width: 100%;" href="#" class="btn btn-warning">Finalizar Compra</a>
-                            </div>
+                    <div class="panel panel-">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Carrinho</h4>
                         </div>
-                    </form>
+                        <div class="panel-body">
+                            <h4><label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span></h4> 
+                            <a style="width: 100%;" href="#" th:href="@{/checkout/fase1}" class="btn btn-warning">Finalizar Compra</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-9">
                     <div class="row">

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <ul class="nav nav-tabs responsive">
+                    <li class="active"><a th:href="@{/checkout/fase1}">Endereço de Entrega</a></li>
+                    <li><a th:href="@{/checkout/fase2}">Dados do Pagamento</a></li>
+                    <li><a th:href="@{/checkout/fase3}">Resumo</a></li>
+                </ul>
+                <br />
+                <div layout:fragment="conteudo-checkout">            
+                    <div class="container">               
+                        <h1>Conteúdo checkout</h1>
+                    </div>
+                </div>        
+                <br />
+                <div>
+                    <button th:text="Anterior"></button>
+                    <button th:text="Seguinte"></button>
+                </div>                
+            </div>
+        </div>
+    </body>
+</html>
