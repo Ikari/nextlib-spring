@@ -17,7 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class CheckoutController {
     
     @Autowired CarrinhoService service;    
-        
+    
+    @RequestMapping
+    public ModelAndView index(){        
+        return new ModelAndView("redirect:/checkout/fase1");
+    }
+    
     @RequestMapping("/fase1")
     public ModelAndView endereco(){        
         return new ModelAndView("checkout/endereco").addObject("endereco", new Endereco());
