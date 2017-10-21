@@ -15,13 +15,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Pedido {
     
     private @Id ObjectId id;
-    private int numero;
+    private long numero;
     private @DBRef Cliente cliente;
     private Date data;
     private @DBRef List<ItemPedido> itens;
     private FormaPagamento formaPagamento;
     private @DBRef Endereco enderecoEntrega;
-
+    
     /**
      * @return the id
      */
@@ -39,14 +39,14 @@ public class Pedido {
     /**
      * @return the numero
      */
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
     /**
      * @param numero the numero to set
      */
-    public void setNumero(int numero) {
+    public void setNumero(long numero) {
         this.numero = numero;
     }
 

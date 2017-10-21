@@ -1,6 +1,6 @@
 package com.next.library.repository;
 
-import com.next.library.model.Produto;
+import com.next.library.model.Pedido;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -8,4 +8,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  *
  * @author roger
  */
-public interface IProdutoRepository extends MongoRepository<Produto, ObjectId> { }
+public interface IPedidoRepository extends MongoRepository<Pedido, ObjectId> { }

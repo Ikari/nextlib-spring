@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html layout:decorate="~{checkout/checkout}">
+<html>
     <head>
         <title>Checkout</title>
     </head>
     <body>
-        <div layout:fragment="conteudo-checkout">
-            <div class="container">               
-                <form th:action="@{/checkout/endereco}" th:object="${endereco}" method="POST" class="form-signin" novalidate>
-                    <div class="col-xs-12 col-sm-9">
-                        <div class="row">
-                            <input type="text" name="cep" th:field="*{cep}" th:placeholder="CEP" class="form-control" required />
-                            <input type="text" name="logradouro" th:field="*{logradouro}" th:placeholder="LOGRADOURO" class="form-control" required />
-                            <input type="text" name="numero" th:field="*{numero}" th:placeholder="NÚMERO" class="form-control" required />
-                            <input type="text" name="complemento" th:field="*{complemento}" th:placeholder="COMPLEMENTO" class="form-control" />
-                        </div>
-                    </div>    
-                </form>
-            </div>
+        <div th:fragment="endereco">
+            <form th:action="@{/checkout/endereco}" th:object="${endereco}" method="POST" class="form-signin" novalidate>
+                <div class="col-xs-12 col-sm-9">
+                    <div class="row">
+                        <input type="text" name="cep" th:field="*{cep}" th:placeholder="CEP" class="form-control" required />
+                        <input type="text" name="logradouro" th:field="*{logradouro}" th:placeholder="LOGRADOURO" class="form-control" required />
+                        <input type="text" name="numero" th:field="*{numero}" th:placeholder="NÚMERO" class="form-control" required />
+                        <input type="text" name="complemento" th:field="*{complemento}" th:placeholder="COMPLEMENTO" class="form-control" />
+                    </div>
+                </div>    
+            </form>
         </div>
     </body>
 </html>

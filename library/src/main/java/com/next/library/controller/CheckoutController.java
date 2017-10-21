@@ -19,8 +19,8 @@ public class CheckoutController {
     @Autowired CarrinhoService service;    
     
     @RequestMapping
-    public ModelAndView index(){        
-        return new ModelAndView("redirect:/checkout/fase1");
+    public ModelAndView index(){
+        return new ModelAndView("checkout/index");
     }
     
     @RequestMapping("/fase1")

@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html layout:decorate="~{checkout/checkout}">
+<html>
     <head>
         <title>Checkout</title>
     </head>
     <body>
-        <div layout:fragment="conteudo-checkout">
-            <div class="container">               
-                <form th:action="@{/checkout/pagamento}" th:object="${cartao}" method="POST" class="form-signin" novalidate>
-                    <div class="col-xs-12 col-sm-9">
-                        <div class="row">
-                            <input type="text" name="numero" th:field="*{numero}" th:placeholder="NÚMERO" class="form-control" required />
-                            <input type="text" name="validade" th:field="*{validade}" th:placeholder="VALIDADE" class="form-control" required />
-                            <input type="text" name="titular" th:field="*{titular}" th:placeholder="TITULAR" class="form-control" required />
-                            <input type="text" name="ccv" th:field="*{ccv}" th:placeholder="CCV" class="form-control" />
-                        </div>
-                    </div>    
-                </form>
-            </div>
+        <div th:fragment="pagamento">
+            <form th:action="@{/checkout/pagamento}" th:object="${cartao}" method="POST" class="form-signin" novalidate>
+                <div class="col-xs-12 col-sm-9">
+                    <div class="row">
+                        <input type="text" name="numero" th:field="*{numero}" th:placeholder="NÚMERO" class="form-control" required />
+                        <input type="text" name="validade" th:field="*{validade}" th:placeholder="VALIDADE" class="form-control" required />
+                        <input type="text" name="titular" th:field="*{titular}" th:placeholder="TITULAR" class="form-control" required />
+                        <input type="text" name="ccv" th:field="*{ccv}" th:placeholder="CCV" class="form-control" />
+                    </div>
+                </div>    
+            </form>
         </div>
     </body>
 </html>
