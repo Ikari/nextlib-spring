@@ -2,7 +2,7 @@ package com.next.library.service;
 
 import com.next.library.model.Endereco;
 import com.next.library.model.Pedido;
-import com.next.library.repository.IPedidoRepository;
+import com.next.library.repository.*;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -19,6 +19,7 @@ public class CheckoutService {
 
     @Autowired HttpServletRequest _request;
     @Autowired IPedidoRepository _repository;
+    @Autowired IEnderecoRepository _endRepository;
     
     private void salvarSession(Pedido pedido){
         _request.getSession().setAttribute("pedido", pedido);
@@ -48,6 +49,9 @@ public class CheckoutService {
     public void adicionarEndereco(Endereco endereco) {
         
         Pedido pedido = obterPedido();
+        
+        _endRepository.save(endereco);        
+        
         pedido.setEnderecoEntrega(endereco);
         
         _repository.save(pedido);

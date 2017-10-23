@@ -31,13 +31,6 @@ public class Endereco implements Serializable {
     }
 
     /**
-     * @param id the id to set
-     */
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
-    /**
      * @return the cep
      */
     public String getCep() {

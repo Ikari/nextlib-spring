@@ -22,13 +22,11 @@ $(function(){
         $.ajax(
             {
                 method: "POST",
-                //contentType:"application/json",
                 url: "/checkout/etapa/" + activeTab.attr("id"),
                 data: $("#form-checkout").serialize(),
                 success: function(data){ 
                     
-                    console.log(data);
-                    $("#" + parseInt(activeTab.attr("id")) + 1).click();
+                    $("#" + (parseInt(activeTab.attr("id")) + 1).toString()).click();
                 },
                 error: function(e){ console.log(e); }
             }

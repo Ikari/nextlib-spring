@@ -61,7 +61,7 @@ public class CheckoutController {
             RedirectAttributes attr
             ) {        
         
-        //service.adicionarEndereco(endereco);
+        service.adicionarEndereco(endereco);
         
         return "{ }";
     }
