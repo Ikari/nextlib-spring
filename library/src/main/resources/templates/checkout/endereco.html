@@ -5,9 +5,10 @@
     </head>
     <body>
         <div th:fragment="endereco">
-            <form th:action="@{/checkout/endereco}" th:object="${endereco}" method="POST" class="form-signin" novalidate>
+            <form id="form-checkout" th:action="@{/checkout/endereco}" th:object="${endereco}" method="POST" class="form-signin" novalidate>
                 <div class="col-xs-12 col-sm-9">
                     <div class="row">
+                        <input type="hidden" name="id" th:field="*{id}"/>
                         <input type="text" name="cep" th:field="*{cep}" th:placeholder="CEP" class="form-control" required />
                         <input type="text" name="logradouro" th:field="*{logradouro}" th:placeholder="LOGRADOURO" class="form-control" required />
                         <input type="text" name="numero" th:field="*{numero}" th:placeholder="NÚMERO" class="form-control" required />

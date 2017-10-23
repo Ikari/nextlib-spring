@@ -5,15 +5,19 @@
  */
 package com.next.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 /**
  *
  * @author roger
  */
-public class Endereco {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Endereco implements Serializable {
     
-    private ObjectId id;
+    @Id private ObjectId id;
     private String cep;
     private String logradouro;
     private String numero;

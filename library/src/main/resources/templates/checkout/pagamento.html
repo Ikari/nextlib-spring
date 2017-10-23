@@ -5,7 +5,7 @@
     </head>
     <body>
         <div th:fragment="pagamento">
-            <form th:action="@{/checkout/pagamento}" th:object="${cartao}" method="POST" class="form-signin" novalidate>
+            <form id="form-checkout" th:action="@{/checkout/pagamento}" th:object="${cartao}" method="POST" class="form-signin" novalidate>
                 <div class="col-xs-12 col-sm-9">
                     <div class="row">
                         <input type="text" name="numero" th:field="*{numero}" th:placeholder="NÚMERO" class="form-control" required />

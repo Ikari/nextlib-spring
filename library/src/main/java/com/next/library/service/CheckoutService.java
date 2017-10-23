@@ -1,5 +1,6 @@
 package com.next.library.service;
 
+import com.next.library.model.Endereco;
 import com.next.library.model.Pedido;
 import com.next.library.repository.IPedidoRepository;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,15 @@ public class CheckoutService {
     @Autowired HttpServletRequest _request;
     @Autowired IPedidoRepository _repository;
     
+    private void salvarSession(Pedido pedido){
+        _request.getSession().setAttribute("pedido", pedido);
+    }
+    
+    private Pedido obterSession() {
+        Object p = _request.getSession().getAttribute("pedido");        
+        return p == null ? criarPedido() : (Pedido)p;    
+    }
+    
     private Pedido criarPedido(){
         
         Pedido pedido = new Pedido();
@@ -26,15 +36,23 @@ public class CheckoutService {
         
         _repository.save(pedido);
         
-        _request.getSession().setAttribute("pedido", pedido);
+        salvarSession(pedido);
         
         return pedido;
     }
     
-    public Pedido obterPedido() {
+    public Pedido obterPedido() {        
+        return obterSession();
+    }
+    
+    public void adicionarEndereco(Endereco endereco) {
         
-        Object p = _request.getSession().getAttribute("pedido");        
-        return p == null ? criarPedido() : (Pedido)p;
+        Pedido pedido = obterPedido();
+        pedido.setEnderecoEntrega(endereco);
+        
+        _repository.save(pedido);
+        
+        salvarSession(pedido);
     }
     
     public void finalizarPedido() {
