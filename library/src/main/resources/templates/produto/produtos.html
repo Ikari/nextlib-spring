@@ -6,15 +6,7 @@
     <body>
         <div layout:fragment="conteudo">                
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <h4>Lista de Produtos</h4>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div style="background-color: #f7f7f7;">
+                <div style="background-color:#fafafa">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12" style="padding-bottom: 30px; margin-top: 34px;">
                             <div th:each='produto : ${produtos}' class="ng-scope">
@@ -43,7 +35,7 @@
                     </div>
                 </div>
             </div>
-        <!--<script src="../../resources/js/pages/produtos.js" type="text/javascript"></script>-->
+            <!--<script src="../../resources/js/pages/produtos.js" type="text/javascript"></script>-->
         </div> 
     </body>
 </html>

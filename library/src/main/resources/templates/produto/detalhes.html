@@ -17,7 +17,7 @@
                             <form action="#" th:action="@{/carrinho/adicionar}" method="POST">
                                 <input type="hidden" name="id" th:value="${produto.id}"/>
                                 <div class="col-md-4 col-sm-5 col-xs-8">
-                                    <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" width="75%" th:alt="${produto.alt}" th:title="${produto.titulo}">
+                                    <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" width="100%" th:alt="${produto.alt}" th:title="${produto.titulo}">
                                 </div>
                                 <div class="caption">
                                     <div class="col-md-8 col-sm-7 col-xs-12">                                    
