@@ -5,8 +5,8 @@
     </head>
     <body>
         <div layout:fragment="conteudo">                
-            <div class="container">
-                <div style="background-color:#fafafa">
+            <div class="container stylegeral">
+                <div class="background">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12" style="padding-bottom: 30px; margin-top: 34px;">
                             <div th:each='produto : ${produtos}' class="ng-scope">
@@ -14,17 +14,21 @@
                                     <!--<div class="thumbnail">-->
                                     <div class="bs-example" data-example-id="thumbnails-with-custom-content"> 
                                         <div class="col-xs-12 col-sm-6 col-md-6">
-                                            <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Thumb}}" style="height: 100%; width: 100%; display: block; padding-top:10px;" th:alt="${produto.alt}" th:title="${produto.titulo}"> 
+                                            <img class="img-responsive-produtos" th:src="@{'data:image/jpeg;base64,'+${produto.base64Thumb}}" th:alt="${produto.alt}" th:title="${produto.titulo}"> 
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <div class="caption">
-                                                <div style="overflow:hidden;text-overflow:ellipsiss; height: 10ch">
+                                                <div class="limite_texto_nome">
                                                     <h4 th:text='${produto.nome}'></h4>
                                                 </div>
-                                                <p style="overflow:hidden; height: 8ch" th:text='${produto.descricao}'></p>
-                                                <div style="overflow:hidden;text-overflow:clip; height: 12ch">
-                                                    <h4><span th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
-                                                    <p><a style="width: 100%;"href="#" th:href="@{/produtos/{id}(id=${produto.id})}" class="btn btn-warning detalhe" role="button">Detalhes</a></p>
+                                                <div class="limite_texto_descricao">
+                                                    <p th:text='${produto.descricao}'></p>
+                                                </div>
+                                                <div>
+                                                    <div class="limite_texto_preco">
+                                                        <h4><span th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
+                                                        <p><a style="width: 100%;"href="#" th:href="@{/produtos/{id}(id=${produto.id})}" class="btn btn-warning detalhe" role="button">Detalhes</a></p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -34,8 +38,8 @@
                         </div>
                     </div>
                 </div>
+                <!--<script src="../../resources/js/pages/produtos.js" type="text/javascript"></script>-->
             </div>
-            <!--<script src="../../resources/js/pages/produtos.js" type="text/javascript"></script>-->
-        </div> 
+        </div>
     </body>
 </html>

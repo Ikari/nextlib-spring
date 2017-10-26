@@ -5,11 +5,11 @@
     </head>
     <body>
         <div layout:fragment="conteudo">
-            <div class="container">                
+            <div class="container stylegeral">                
                 <div class="col-xs-12 col-sm-9">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <h3>Itens adquiridos</h3>
+                            <h4 class="media-heading">Itens adquiridos</h4>
                         </div>
                     </div>
                     <div class="bs-example" data-example-id="panel-without-body-with-table"> 
@@ -24,15 +24,17 @@
                                                 <img style="padding: 2px; padding-top: 3px;" th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="100%" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}">            
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-9">
-                                            <h4 th:text='${item.produto.nome}'></h4>
-                                            <h4><span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span></h4> 
-                                            <h4>
-                                                <span class="label label-default">
-                                                    Quantidade. <span th:text='${item.quantidade}'</span>
-                                                </span>
-                                            </h4>
-                                            <a style="width: 100%;" href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}" class="btn btn-warning">Remover</a>
-                                            <hr>
+                                                <h4 th:text='${item.produto.nome}'></h4>
+                                                <h4>
+                                                    <span class="label label-default">
+                                                        Quantidade. <span th:text='${item.quantidade}'</span>
+                                                    </span>
+                                                </h4>
+                                                <h4><span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span></h4> 
+                                                <div class="botao-remover">
+                                                     <a href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}" class="btn btn-warning">Remover</a>
+                                                </div>
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -42,16 +44,24 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-3 ng-scope">        
-                    <div class="panel panel-">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">Carrinho</h4>
-                        </div>
+                    <div class="panel panel-default">
                         <div class="panel-body">
+                            <address>
+                                <strong>Endereço</strong><br>
+                                Rua São Miguel dos Milagres, 80<br>
+                                São Paulo, BR 02812-10<br>
+                                <abbr title="Telefone">Fone:</abbr> (11)988997766
+                            </address>
+
+                            <address>
+                                <strong>João Santos Oliveira</strong><br>
+                                <a href="mailto:#">joao@gmail.com</a>
+                            </address>
                             <h4><label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span></h4> 
                             <a style="width: 100%;" href="#" th:href="@{/checkout/fase1}" class="btn btn-warning">Finalizar Compra</a>
                         </div>
                     </div>
-                </div>
+                </div>           
             </div>
         </div>
     </body>
