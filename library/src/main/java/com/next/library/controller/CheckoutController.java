@@ -2,17 +2,15 @@ package com.next.library.controller;
 
 import com.next.library.dtos.CartaoCredito;
 import com.next.library.model.Endereco;
+import com.next.library.model.FormaPagamento;
 import com.next.library.model.Pedido;
 import com.next.library.service.CheckoutService;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -61,7 +59,31 @@ public class CheckoutController {
             RedirectAttributes attr
             ) {        
         
-        service.adicionarEndereco(endereco);
+        service.indicarEndereco(endereco);
+        
+        return "{ }";
+    }
+    
+    @RequestMapping(value = "/etapa/2", method=RequestMethod.POST)
+    public @ResponseBody String salvarPagamento(
+            @ModelAttribute("formaPagamento") FormaPagamento pagamento,
+            @ModelAttribute("dadosCartao") CartaoCredito cartao,
+            BindingResult result,
+            RedirectAttributes attr
+            ) {        
+        
+        switch (pagamento) {
+            case BOLETO:
+                //Gera boleto
+                break;
+            case CARTAO_CREDITO:
+                //Valida cartão
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
+        service.indicarFormaPagamento(pagamento);
         
         return "{ }";
     }

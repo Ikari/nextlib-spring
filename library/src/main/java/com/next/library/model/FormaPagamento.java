@@ -5,14 +5,11 @@
  */
 package com.next.library.model;
 
-import org.bson.types.ObjectId;
-
 /**
  *
  * @author roger
  */
-public interface FormaPagamento {    
-    
-    public ObjectId getId();
-    public boolean validarPagamento();
+public enum FormaPagamento {
+    BOLETO,
+    CARTAO_CREDITO
 }

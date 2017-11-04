@@ -1,6 +1,7 @@
 package com.next.library.service;
 
 import com.next.library.model.Endereco;
+import com.next.library.model.FormaPagamento;
 import com.next.library.model.Pedido;
 import com.next.library.repository.*;
 import javax.servlet.http.HttpServletRequest;
@@ -46,13 +47,24 @@ public class CheckoutService {
         return obterSession();
     }
     
-    public void adicionarEndereco(Endereco endereco) {
+    public void indicarEndereco(Endereco endereco) {
         
         Pedido pedido = obterPedido();
         
         _endRepository.save(endereco);        
         
         pedido.setEnderecoEntrega(endereco);
+        
+        _repository.save(pedido);
+        
+        salvarSession(pedido);
+    }
+    
+    public void indicarFormaPagamento(FormaPagamento forma) {
+        
+        Pedido pedido = obterPedido();    
+        
+        pedido.setFormaPagamento(forma);
         
         _repository.save(pedido);
         
