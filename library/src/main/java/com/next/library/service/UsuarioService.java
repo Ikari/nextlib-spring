@@ -2,9 +2,11 @@ package com.next.library.service;
 
 import com.next.library.model.Cliente;
 import com.next.library.model.Endereco;
+import com.next.library.model.Regra;
 import com.next.library.model.Usuario;
 import com.next.library.repository.*;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -23,6 +25,7 @@ public class UsuarioService {
     @Autowired IUsuarioRepository _repository;
     @Autowired IClienteRepository _repositoryCliente;
     @Autowired IEnderecoRepository _repositoryEndereco;
+    @Autowired IRegraRepository _repositoryRegra;
     
     public Usuario obterUsuarioCadastro(){        
         Object usuario = _request.getSession().getAttribute("usuario-temp");        
@@ -72,6 +75,11 @@ public class UsuarioService {
         Usuario usuario = (Usuario)_request.getSession().getAttribute("usuario-temp");        
         Cliente cliente = usuario.getCliente();        
         Endereco endereco = cliente.getEnderecos().get(0);
+        
+        List<Regra> regras = new ArrayList<>();
+        regras.add(_repositoryRegra.findRegraByRegra("USUARIO"));
+        
+        usuario.setRegras(regras);
         
         _repositoryEndereco.save(endereco);
         _repositoryCliente.save(cliente);

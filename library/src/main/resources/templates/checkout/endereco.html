@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <div th:fragment="pagamento">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-8 col-xs-12 next-tab-container">
+                        <form method="POST" th:object="${endereco}" class="form-signin" novalidate>
+                            <div th:replace="~{shared/endereco}"></div>
+                        </form>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
