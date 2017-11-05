@@ -6,23 +6,32 @@
     <body>
         <div th:fragment="resumo">
             <div class="container">
-                <div class="col-xs-12 col-sm-9" id="endereco">
+                <div class="col-xs-12 col-sm-12 col-lg-12">
                     <div class="row">
-                        <span th:text="${pedido.endereco}"></span>
-                    </div>
-                </div>                
-                <div class="col-xs-12 col-sm-9" id="endereco">
-                    <div class="row">
-                        <span th:text="${pedido.pagamento}"></span>
+                        <h2 th:text="'PEDIDO Nº ' + ${pedido.numero}"></h2>
                     </div>
                 </div>
-                <form th:action="@{/checkout/pagamento}" th:object="${cartao}" method="POST" class="form-signin" novalidate>
-                    <div class="col-xs-12 col-sm-9">
-                        <div class="row">
-                            <input type="submit" class="form-control">Salvar</input>
-                        </div>
-                    </div>    
-                </form>
+                <div class="col-xs-12 col-sm-9 col-lg-3">
+                    <div class="row">
+                        <span>Endereço de Entrega</span><br>
+                        <span th:text="${pedido.enderecoEntrega.cep}"></span><br>
+                        <span th:text="${pedido.enderecoEntrega.logradouro}"></span><br>
+                        <span th:text="${pedido.enderecoEntrega.complemento}"></span><br>
+                    </div>
+                </div>                
+                <div class="col-xs-12 col-sm-9 col-lg-3">
+                    <div class="row">
+                        <span>Forma de pagamento</span><br>
+                        <span th:text="${pedido.formaPagamento}"></span>
+                    </div>
+                </div>                
+                <div class="col-xs-12 col-sm-9 col-lg-12">
+                    <div class="row">
+                        <form th:action="@{/checkout/finalizar}" method="POST">
+                            <input type="submit" class="btn btn-success">Finalizar Pedido</input>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

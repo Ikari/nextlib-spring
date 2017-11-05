@@ -21,7 +21,7 @@
                         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 next-tab">
                             <div class="next-tab-content active">
                                 <center>
-                                    <form  id="form-cartao" method="POST" th:object="${cartao}" class="form-signin" novalidate>
+                                    <form  id="form-checkout" method="POST" th:object="${cartao}" class="form-signin" novalidate>
                                         <div id="cartao" class="col-xs-12 col-sm-12">
                                             <div class="row">
                                                 <input type="text" name="numero" th:field="*{numero}" th:placeholder="NÚMERO" class="form-control" required />
@@ -35,11 +35,10 @@
                             </div>
                             <div class="next-tab-content">
                                 <center>
-                                    <h3 class="glyphicon glyphicon glyphicon-usd" style="font-size:5em;color:#55518a"></h3>
                                     <form id="form-boleto" method="POST" class="form-signin" novalidate>                
                                         <div id="boleto" class="col-xs-9 col-sm-6" style="display: none;">
                                             <div class="row">
-                                                Boleto a ser gerado
+                                                INDISPONÍVEL :(
                                             </div>
                                         </div>                
                                     </form>

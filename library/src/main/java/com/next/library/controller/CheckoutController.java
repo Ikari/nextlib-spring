@@ -43,7 +43,7 @@ public class CheckoutController {
     
     @RequestMapping("/3")
     public ModelAndView resumo(){        
-        return new ModelAndView("checkout/resumo");
+        return new ModelAndView("checkout/resumo").addObject("pedido", service.obterPedido());
     }
     
     @RequestMapping("/pedido")
@@ -65,24 +65,22 @@ public class CheckoutController {
     
     @RequestMapping(value = "/etapa/2", method=RequestMethod.POST)
     public @ResponseBody String salvarPagamento(
-            @ModelAttribute("formaPagamento") FormaPagamento pagamento,
-            @ModelAttribute("dadosCartao") CartaoCredito cartao,
+            @ModelAttribute("cartao") CartaoCredito cartao,
             BindingResult result,
             RedirectAttributes attr
             ) {        
+                
+        //valida os dados do cartão, yada yada yada...
         
-        switch (pagamento) {
-            case BOLETO:
-                //Gera boleto
-                break;
-            case CARTAO_CREDITO:
-                //Valida cartão
-                break;
-            default:
-                throw new AssertionError();
-        }
+        service.indicarFormaPagamento(FormaPagamento.CARTAO_CREDITO);
         
-        service.indicarFormaPagamento(pagamento);
+        return "{ }";
+    }
+    
+    @RequestMapping(value = "/finalizar", method=RequestMethod.POST)
+    public @ResponseBody String finalizar() {        
+                
+        service.finalizarPedido();
         
         return "{ }";
     }

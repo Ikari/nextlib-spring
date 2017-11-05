@@ -74,7 +74,7 @@ public class CheckoutService {
         
         pedido.setEnderecoEntrega(endereco);
         
-        _repository.save(pedido);
+        //_repository.save(pedido);
         
         salvarSession(pedido);
     }
@@ -85,7 +85,7 @@ public class CheckoutService {
         
         pedido.setFormaPagamento(forma);
         
-        _repository.save(pedido);
+        //_repository.save(pedido);
         
         salvarSession(pedido);
     }
