@@ -3,11 +3,14 @@ package com.next.library.service;
 import com.next.library.model.Endereco;
 import com.next.library.model.FormaPagamento;
 import com.next.library.model.Pedido;
+import com.next.library.model.Usuario;
 import com.next.library.repository.*;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,8 +22,11 @@ import org.springframework.stereotype.Component;
 public class CheckoutService {
 
     @Autowired HttpServletRequest _request;
+    @Autowired UsuarioService _usuarioService;
     @Autowired IPedidoRepository _repository;
     @Autowired IEnderecoRepository _endRepository;
+    @Autowired IUsuarioRepository _usuarioRepository;
+    
     
     private void salvarSession(Pedido pedido){
         _request.getSession().setAttribute("pedido", pedido);
@@ -31,10 +37,23 @@ public class CheckoutService {
         return p == null ? criarPedido() : (Pedido)p;    
     }
     
+    public Endereco obterEnderecoEntrega(){
+        Pedido pedido = obterPedido();
+        
+        if (pedido.getEnderecoEntrega() != null)
+            return pedido.getEnderecoEntrega();
+        
+        return pedido.getCliente().getEnderecos().get(0);
+    }
+    
     private Pedido criarPedido(){
         
         Pedido pedido = new Pedido();
         pedido.setNumero(System.currentTimeMillis());        
+                
+        Usuario usuario = _usuarioService.obterUsuarioLogado();
+        
+        pedido.setCliente(usuario.getCliente());
         
         _repository.save(pedido);
         

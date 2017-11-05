@@ -32,9 +32,8 @@ public class CheckoutController {
     }
     
     @RequestMapping("/1")
-    public ModelAndView endereco(){       
-        Pedido pedido = service.obterPedido();        
-        return new ModelAndView("checkout/endereco").addObject("endereco", pedido.getEnderecoEntrega() == null ? new Endereco() : pedido.getEnderecoEntrega());
+    public ModelAndView endereco(){             
+        return new ModelAndView("checkout/endereco").addObject("endereco", service.obterEnderecoEntrega());
     }
     
     @RequestMapping("/2")
