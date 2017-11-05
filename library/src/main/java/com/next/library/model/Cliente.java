@@ -16,21 +16,15 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 public class Cliente implements Serializable {
         
     private @Id ObjectId id;
-    
-    private String username;
-    private String password;    
-    private @Indexed(unique=true) String email;    
+       
     private String nome;    
-    private @Indexed(unique=true) String cpf;    
-    private @DBRef List<Regra> regras;
+    private @Indexed(unique=true) String cpf;
+    private String nascimento;
+    private String telefone;
+    private @DBRef List<Endereco> enderecos;
+    private @DBRef List<Pedido> pedidos;
     
     public Cliente(){ }
-    
-    public Cliente(String username, String password, String email){
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
 
     /**
      * @return the id
@@ -68,58 +62,69 @@ public class Cliente implements Serializable {
     }
 
     /**
-     * @return the username
+     * @return the enderecos
      */
-    public String getUsername() {
-        return username;
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
     /**
-     * @param username the username to set
+     * @param enderecos the enderecos to set
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+    
+    public void adicionarEndereco(Endereco endereco){
+        this.getEnderecos().add(endereco);
     }
 
     /**
-     * @return the password
+     * @param id the id to set
      */
-    public String getPassword() {
-        return password;
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     /**
-     * @param password the password to set
+     * @return the pedidos
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public List<Pedido> getPedidos() {
+        return pedidos;
     }
 
     /**
-     * @return the email
+     * @param pedidos the pedidos to set
      */
-    public String getEmail() {
-        return email;
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     /**
-     * @param email the email to set
+     * @return the nascimento
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public String getNascimento() {
+        return nascimento;
     }
 
     /**
-     * @return the regras
+     * @param nascimento the nascimento to set
      */
-    public List<Regra> getRegras() {
-        return regras;
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
     }
 
     /**
-     * @param regras the regras to set
+     * @return the telefone
      */
-    public void setRegras(List<Regra> regras) {
-        this.regras = regras;
+    public String getTelefone() {
+        return telefone;
+    }
+
+    /**
+     * @param telefone the telefone to set
+     */
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }

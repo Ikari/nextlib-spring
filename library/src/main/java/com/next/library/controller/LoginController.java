@@ -1,7 +1,9 @@
 package com.next.library.controller;
 
 import com.next.library.model.Cliente;
-import com.next.library.service.ClienteService;
+import com.next.library.model.Usuario;
+import com.next.library.model.Endereco;
+import com.next.library.service.UsuarioService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/login")
 public class LoginController {
             
-    @Autowired
-    ClienteService service;
+    @Autowired UsuarioService service;
     
     @RequestMapping
     public ModelAndView login(){                
@@ -33,13 +34,37 @@ public class LoginController {
         return new ModelAndView("/login/login-error");        
     }   
     
-    @RequestMapping("/cadastro")
-    public ModelAndView cadastro(){        
+    @RequestMapping("/cadastro/1")
+    public ModelAndView cadastroUsuario(){        
         return new ModelAndView("/login/cadastro");        
     }
     
-    @RequestMapping(value="/cadastrar", method=RequestMethod.POST)
-    public ModelAndView cadastrar(
+    @RequestMapping("/cadastro/2")
+    public ModelAndView cadastroCliente(){        
+        return new ModelAndView("/login/cadastro");        
+    }
+    
+    @RequestMapping("/cadastro/3")
+    public ModelAndView cadastroEndereco(){        
+        return new ModelAndView("/login/cadastro");        
+    }
+    
+    @RequestMapping(value="/cadastrar/1", method=RequestMethod.POST)
+    public ModelAndView cadastrarUsuario(
+           @ModelAttribute("usuario") @Valid Usuario usuario,
+           BindingResult binding,
+           RedirectAttributes attributes){        
+        
+        if (binding.hasErrors())
+            return new ModelAndView("/login/cadastro");
+        
+        service.cadastrarUsuarioFase1(usuario);
+        
+        return new ModelAndView("redirect:/cadastro/2");        
+    }
+    
+    @RequestMapping(value="/cadastrar/2", method=RequestMethod.POST)
+    public ModelAndView cadastrarCliente(
            @ModelAttribute("cliente") @Valid Cliente cliente,
            BindingResult binding,
            RedirectAttributes attributes){        
@@ -47,8 +72,23 @@ public class LoginController {
         if (binding.hasErrors())
             return new ModelAndView("/login/cadastro");
         
-        service.cadastrarCliente(cliente);
+        service.cadastrarUsuarioFase2(cliente);
         
-        return new ModelAndView("redirect:/login");        
+        return new ModelAndView("redirect:/cadastro/3");        
+    }
+    
+    @RequestMapping(value="/cadastrar/3", method=RequestMethod.POST)
+    public ModelAndView cadastrarEndereco(
+           @ModelAttribute("endereco") @Valid Endereco endereco,
+           BindingResult binding,
+           RedirectAttributes attributes){        
+        
+        if (binding.hasErrors())
+            return new ModelAndView("/login/cadastro");
+        
+        service.cadastrarUsuarioFase3(endereco);
+        service.finalizarCadastro();
+        
+        return new ModelAndView("redirect:/finalizar");        
     }
 }

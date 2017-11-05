@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Endereço</title>
+    </head>
+    <body>
+        <div th:fragment="endereco">
+            <div class="col-xs-12 col-sm-12">
+                <br>                                
+                Nome (identificação deste endereço):<input type="text" name="nome" th:field="*{nome}" th:placeholder="NOME" class="form-control" required />
+                CEP:<input type="text" name="cep" th:field="*{cep}" th:placeholder="CEP" class="form-control" required />
+                Logradouro, número:<input type="text" name="logradouro" th:field="*{logradouro}" th:placeholder="LOGRADOURO" class="form-control" required />
+                Andar, unidade, bloco, complemento:<input type="text" name="complemento" th:field="*{complemento}" th:placeholder="COMPLEMENTO" class="form-control" />
+                Cidade:<input type="text" name="cidade" th:field="*{cidade}" th:placeholder="CIDADE" class="form-control" />
+                Estado (Sigla):<input type="text" name="estado" th:field="*{estado}" th:placeholder="ESTADO" class="form-control" />
+            </div>
+        </div>
+    </body>
+</html>

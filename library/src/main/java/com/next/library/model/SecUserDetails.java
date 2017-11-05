@@ -15,25 +15,25 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class SecUserDetails implements UserDetails {
     
-    private Cliente cliente;
+    private final Usuario usuario;
     
-    public SecUserDetails(Cliente cliente){
-        this.cliente = cliente;
+    public SecUserDetails(Usuario usuario){
+        this.usuario = usuario;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return cliente.getRegras();
+        return usuario.getRegras();
     }
 
     @Override
     public String getPassword() {
-        return cliente.getPassword();
+        return usuario.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return cliente.getUsername();
+        return usuario.getEmail();
     }
 
     @Override

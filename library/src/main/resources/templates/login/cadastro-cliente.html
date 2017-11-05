@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Cadastro de Usuário</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container formulario login">
+                <form th:action="@{/login/cadastrar/2}" th:object="${cliente}" method="POST" class="form-signin">
+                    <h3 class="form-signin-heading">Cadastro de cliente</h3>
+                    <br />
+                    <input type="text" id="cpf" name="cpf" th:placeholder="CPF" class="form-control">
+                    <input type="text" id="nascimento" name="nascimento" th:placeholder="DATA DE NASCIMENTO" class="form-control">
+                    <input type="text" id="telefone" name="telefone" th:placeholder="TELEFONE" class="form-control">
+                    <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Cadastrar" type="submit" th:text="Cadastrar"></button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

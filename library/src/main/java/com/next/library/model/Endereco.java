@@ -18,10 +18,13 @@ import org.springframework.data.annotation.Id;
 public class Endereco implements Serializable {
     
     @Id private ObjectId id;
+    private String nome;
     private String cep;
     private String logradouro;
     private String numero;
     private String complemento;
+    private String cidade;
+    private String estado;
 
     /**
      * @return the id
@@ -84,5 +87,54 @@ public class Endereco implements Serializable {
      */
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the cidade
+     */
+    public String getCidade() {
+        return cidade;
+    }
+
+    /**
+     * @param cidade the cidade to set
+     */
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

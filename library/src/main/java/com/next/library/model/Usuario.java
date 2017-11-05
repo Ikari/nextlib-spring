@@ -7,6 +7,7 @@ package com.next.library.model;
 
 import java.util.List;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 /**
  *
@@ -15,10 +16,16 @@ import org.bson.types.ObjectId;
 public class Usuario {
     
     private ObjectId id;
-    private String username;
+    private @Indexed(unique=true) String email;
     private String password;
+    private Cliente cliente;
     private List<Regra> regras;
 
+    public Usuario(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
+    
     /**
      * @return the id
      */
@@ -31,20 +38,6 @@ public class Usuario {
      */
     public void setId(ObjectId id) {
         this.id = id;
-    }
-
-    /**
-     * @return the username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     /**
@@ -73,5 +66,33 @@ public class Usuario {
      */
     public void setRegras(List<Regra> regras) {
         this.regras = regras;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

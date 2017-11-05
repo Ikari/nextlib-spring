@@ -1,8 +1,8 @@
 package com.next.library.controller;
 
-import com.next.library.model.Cliente;
+import com.next.library.model.Usuario;
 import com.next.library.model.Regra;
-import com.next.library.repository.IClienteRepository;
+import com.next.library.repository.IUsuarioRepository;
 import com.next.library.repository.IRegraRepository;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class MainController {
     
-    @Autowired private IClienteRepository clienteRepository;
+    @Autowired private IUsuarioRepository usuarioRepository;
     @Autowired private IRegraRepository regraRepository;
     
     @RequestMapping
@@ -44,17 +44,17 @@ public class MainController {
     
     private void criarAdmin(){
         
-        Cliente c = clienteRepository.findClienteByUsername("admin");
+        Usuario u = usuarioRepository.findUsuarioByEmail("admin@zmail.com");
         
-        if (c == null){
-            Cliente cliente = new Cliente("admin", "admin", "admin@zmail.com");
+        if (u == null){
+            Usuario usuario = new Usuario("admin@zmail.com", "admin");
         
             List<Regra> regras = new ArrayList<>();
             regras.add(regraRepository.findRegraByRegra("ADMINISTRADOR"));
 
-            cliente.setRegras(regras);
+            usuario.setRegras(regras);
 
-            clienteRepository.save(cliente);
+            usuarioRepository.save(usuario);
         }
     }
 }

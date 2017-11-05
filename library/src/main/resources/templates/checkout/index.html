@@ -7,8 +7,8 @@
         <div layout:fragment="conteudo">
             <div class="container">
                 <ul id="tabs" class="nav nav-tabs responsive">
-                    <li class="active"><a id="1"><span class="glyphicon glyphicon-envelope"></span> Endereço de Entregas</a></li>
-                    <li class="inactive"><a id="2"><span class="glyphicon glyphicon-credit-card"></span> Dados do Pagamento</a></li>
+                    <li class="active"><a id="1"><span class="glyphicon glyphicon-envelope"></span> Entrega</a></li>
+                    <li class="inactive"><a id="2"><span class="glyphicon glyphicon-credit-card"></span> Pagamento</a></li>
                     <li class="inactive"><a id="3"><span class="glyphicon glyphicon-shopping-cart"></span> Resumo</a></li>
                 </ul>
                 <br />
@@ -19,10 +19,11 @@
                 <ul class="pager">
                     <li class="previous"><a id="back" th:text="Voltar"></a></li>
                     <li class="next"><a id="save-and-continue" th:text="Continuar"></a></li>
-                    <li class="next"><a id="save" th:text="Salvar"></a></li>                    
-                </div>                
-                <script src="../../../resources/js/pages/checkout.js" type="text/javascript"></script>
-            </div>
+                    <li class="next"><a id="save" th:text="Salvar"></a></li>
+                </ul>
+            </div>                
+            <script src="../../../resources/js/pages/checkout.js" type="text/javascript"></script>                
+            <link href="../../../resources/css/vertical-menu-tab.css" rel="stylesheet" type="text/css"/>
         </div>
     </body>
 </html>

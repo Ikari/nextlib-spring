@@ -1,8 +1,8 @@
 package com.next.library.service;
 
-import com.next.library.model.Cliente;
+import com.next.library.model.Usuario;
 import com.next.library.model.SecUserDetails;
-import com.next.library.repository.IClienteRepository;
+import com.next.library.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -16,16 +16,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @Component
 public class SecUserDetailsService implements UserDetailsService {
     
-    @Autowired
-    private IClienteRepository _repository;
+    @Autowired private IUsuarioRepository _repository;
+    @Autowired private UsuarioService _service; 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Cliente cliente = _repository.findClienteByUsername(username);
-        if (cliente == null)
+        
+        Usuario usuario = _repository.findUsuarioByEmail(username);
+        
+        if (usuario == null)
             throw new UsernameNotFoundException(username);
         
-        UserDetails details = new SecUserDetails(cliente);
-        return details;
+        _service.logarUsuario(usuario);
+        
+        return new SecUserDetails(usuario);
     }
 }

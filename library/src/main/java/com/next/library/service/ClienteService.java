@@ -1,7 +1,10 @@
 package com.next.library.service;
 
 import com.next.library.model.Cliente;
+import com.next.library.model.Endereco;
 import com.next.library.repository.IClienteRepository;
+import com.next.library.repository.IEnderecoRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +16,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClienteService {
     
-    @Autowired
-    private IClienteRepository repository;
+    @Autowired private IClienteRepository repository;
+    @Autowired private IEnderecoRepository enderecoRepository;
     
     public Cliente cadastrarCliente(Cliente cliente){
         
-        if(validarCpfCadastrado(cliente.getCpf()) || 
-           validarEmailCadastrado(cliente.getEmail()) ||
-           validarUsernameCadastrado(cliente.getUsername()))
+        if(validarCpfCadastrado(cliente.getCpf()))
             return null;
         
         repository.save(cliente);
@@ -28,15 +29,18 @@ public class ClienteService {
         return cliente;
     }
     
+    public void cadastrarEndereco(ObjectId clienteId, Endereco endereco){
+        
+        Cliente cliente = repository.findOne(clienteId);
+        
+        enderecoRepository.save(endereco);
+        
+        cliente.adicionarEndereco(endereco);
+        
+        repository.save(cliente);
+    }
+    
     private boolean validarCpfCadastrado(String cpf){
         return repository.findClienteByCpf(cpf) != null;
-    }
-    
-    private boolean validarEmailCadastrado(String email){
-        return repository.findClienteByEmail(email) != null;
-    }
-    
-    private boolean validarUsernameCadastrado(String username){
-        return repository.findClienteByUsername(username) != null;
     }
 }
