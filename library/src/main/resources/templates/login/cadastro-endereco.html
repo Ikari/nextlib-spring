@@ -6,9 +6,9 @@
     <body>
         <div layout:fragment="conteudo">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-8 col-xs-12 next-tab-container">
-                    <form th:action="@{/login/cadastrar/2}" th:object="${endereco}" method="POST" class="form-signin formulario">
-                        <div th:fragment="endereco"></div>
+                <div class="container formulario login">
+                    <form th:action="@{/login/cadastrar/3}" th:object="${endereco}" method="POST" class="form-signin formulario">
+                        <div th:replace="~{shared/endereco}"></div>
                         <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Cadastrar" type="submit" th:text="Cadastrar"></button>
                     </form>
                 </div>

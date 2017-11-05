@@ -8,6 +8,7 @@ package com.next.library.model;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  *
@@ -18,9 +19,11 @@ public class Usuario {
     private ObjectId id;
     private @Indexed(unique=true) String email;
     private String password;
-    private Cliente cliente;
+    private @DBRef Cliente cliente;
     private List<Regra> regras;
 
+    public Usuario(){}
+    
     public Usuario(String email, String password){
         this.email = email;
         this.password = password;

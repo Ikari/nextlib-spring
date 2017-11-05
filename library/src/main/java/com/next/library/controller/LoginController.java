@@ -35,18 +35,18 @@ public class LoginController {
     }   
     
     @RequestMapping("/cadastro/1")
-    public ModelAndView cadastroUsuario(){        
-        return new ModelAndView("/login/cadastro");        
+    public ModelAndView cadastroUsuario(){               
+        return new ModelAndView("/login/cadastro-usuario").addObject("usuario", service.obterUsuarioCadastro());
     }
     
     @RequestMapping("/cadastro/2")
     public ModelAndView cadastroCliente(){        
-        return new ModelAndView("/login/cadastro");        
+        return new ModelAndView("/login/cadastro-cliente").addObject("cliente", service.obterClienteCadastro());
     }
     
     @RequestMapping("/cadastro/3")
     public ModelAndView cadastroEndereco(){        
-        return new ModelAndView("/login/cadastro");        
+        return new ModelAndView("/login/cadastro-endereco").addObject("endereco", service.obterEnderecoCadastro());
     }
     
     @RequestMapping(value="/cadastrar/1", method=RequestMethod.POST)
@@ -60,7 +60,7 @@ public class LoginController {
         
         service.cadastrarUsuarioFase1(usuario);
         
-        return new ModelAndView("redirect:/cadastro/2");        
+        return new ModelAndView("redirect:/login/cadastro/2");
     }
     
     @RequestMapping(value="/cadastrar/2", method=RequestMethod.POST)
@@ -74,7 +74,7 @@ public class LoginController {
         
         service.cadastrarUsuarioFase2(cliente);
         
-        return new ModelAndView("redirect:/cadastro/3");        
+        return new ModelAndView("redirect:/login/cadastro/3");
     }
     
     @RequestMapping(value="/cadastrar/3", method=RequestMethod.POST)
@@ -89,6 +89,6 @@ public class LoginController {
         service.cadastrarUsuarioFase3(endereco);
         service.finalizarCadastro();
         
-        return new ModelAndView("redirect:/finalizar");        
+        return new ModelAndView("redirect:/login");        
     }
 }

@@ -3,7 +3,8 @@ package com.next.library.service;
 import com.next.library.model.Cliente;
 import com.next.library.model.Endereco;
 import com.next.library.model.Usuario;
-import com.next.library.repository.IUsuarioRepository;
+import com.next.library.repository.*;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -20,6 +21,33 @@ public class UsuarioService {
     
     @Autowired HttpServletRequest _request;
     @Autowired IUsuarioRepository _repository;
+    @Autowired IClienteRepository _repositoryCliente;
+    @Autowired IEnderecoRepository _repositoryEndereco;
+    
+    public Usuario obterUsuarioCadastro(){        
+        Object usuario = _request.getSession().getAttribute("usuario-temp");        
+        return usuario == null? new Usuario() : (Usuario)usuario;
+    }
+    
+    public Cliente obterClienteCadastro(){        
+        Object usuario = _request.getSession().getAttribute("usuario-temp");            
+        Cliente cliente = usuario == null ? new Cliente() : ((Usuario)usuario).getCliente();        
+        return cliente == null ? new Cliente() : cliente;
+    }
+    
+    public Endereco obterEnderecoCadastro(){        
+        Object usuario = _request.getSession().getAttribute("usuario-temp");        
+        
+        if (usuario == null)
+            return new Endereco();
+        
+        Cliente cliente = ((Usuario)usuario).getCliente();
+        
+        if (cliente == null || cliente.getEnderecos() == null || cliente.getEnderecos().isEmpty())
+            return new Endereco();
+        
+        return cliente.getEnderecos().get(0);
+    }
     
     public void cadastrarUsuarioFase1(Usuario usuario){
         _request.getSession().setAttribute("usuario-temp", usuario);
@@ -34,12 +62,19 @@ public class UsuarioService {
     public void cadastrarUsuarioFase3(Endereco endereco){
         Usuario usuario = (Usuario)_request.getSession().getAttribute("usuario-temp");
         Cliente cliente = usuario.getCliente();
+        cliente.setEnderecos(new ArrayList<>());
         cliente.adicionarEndereco(endereco);
         cadastrarUsuarioFase2(cliente);
     }
     
     public void finalizarCadastro(){
-        Usuario usuario = (Usuario)_request.getSession().getAttribute("usuario-temp");
+        
+        Usuario usuario = (Usuario)_request.getSession().getAttribute("usuario-temp");        
+        Cliente cliente = usuario.getCliente();        
+        Endereco endereco = cliente.getEnderecos().get(0);
+        
+        _repositoryEndereco.save(endereco);
+        _repositoryCliente.save(cliente);
         _repository.save(usuario);
     }
     
