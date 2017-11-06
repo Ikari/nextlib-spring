@@ -10,15 +10,14 @@
 }
 
 .limite_texto_nome{
-    overflow:hidden;
-    text-overflow:ellipsiss;
     height: 10ch;
+    text-overflow:ellpsis;
 }
 
 .limite_texto_descricao{
-
     overflow:hidden;
     height: 8ch;
+    text-overflow: ellipsis;
 }
 .limite_texto_preco{
 
