@@ -22,22 +22,20 @@
                             <div class="col-xs-12 col-sm-4 col-md-6 ng-scope">        
                                 <div class="panel panel-default">
                                     <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <address>
+                                                <strong>Autor: </strong>
+                                                J. K. Rowling <br>
+                                                <strong>Data de publicação: </strong>
+                                                18 de novembro de 2016<br>
+                                                <strong>Gênero:</strong>
+                                                Literatura fantástica<br>
+                                            </address>
+                                        </div>
                                         <div class="col-md-6">
-                                            <address>
-                                                <strong>Endereço</strong><br>
-                                                Rua São Miguel dos Milagres, 80<br>
-                                                São Paulo, BR 02812-10<br>
-                                                <abbr title="Telefone">Fone:</abbr> (11)988997766
-                                            </address>
-
-                                            <address>
-                                                <strong>João Santos Oliveira</strong><br>
-                                                <a href="mailto:#">joao@gmail.com</a>
-                                            </address>
                                             <h4><p th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
                                         </div>
                                         <div class="col-md-6">
-
                                             <div class="col-md-6 col-sm-7 col-xs-12">                                        
                                                 <p><a style="width: 200px" href="#" class="btn btn-warning adicionar" onclick="document.forms[0].submit()" role="button">Adicionar ao Carrinho</a></p>
                                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

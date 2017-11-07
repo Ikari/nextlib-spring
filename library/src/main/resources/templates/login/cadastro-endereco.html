@@ -7,7 +7,7 @@
         <div layout:fragment="conteudo">
             <div class="row">
                 <div class="container formulario login">
-                    <form th:action="@{/login/cadastrar/3}" th:object="${endereco}" method="POST" class="form-signin formulario">
+                    <form th:action="@{/login/cadastrar/3}" th:object="${endereco}" method="POST" class="form-group form-group-sm formulario">
                         <div th:replace="~{shared/endereco}"></div>
                         <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Cadastrar" type="submit" th:text="Cadastrar"></button>
                     </form>

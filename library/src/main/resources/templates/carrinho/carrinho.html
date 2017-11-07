@@ -7,11 +7,6 @@
         <div layout:fragment="conteudo">
             <div class="container stylegeral">                
                 <div class="col-xs-12 col-sm-9">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="media-heading">Itens adquiridos</h4>
-                        </div>
-                    </div>
                     <div class="bs-example" data-example-id="panel-without-body-with-table"> 
                         <div class="panel panel-default"> 
                             <!--<div class="panel-heading">Itens Carrinho</div>
@@ -26,8 +21,11 @@
                                             <div class="col-xs-12 col-sm-12 col-md-9">
                                                 <h4 th:text='${item.produto.nome}'></h4>
                                                 <h4>
-                                                    <span class="label label-default">Quantidade.</span>
-                                                    <input type="number" th:value="${item.quantidade}" />
+                                                    <!--<span class="label label-default">Quantidade.</span>
+                                                    <input type="number" th:value="${item.quantidade}" />-->
+                                                    <span class="label label-default">
+                                                        Quantidade. <span th:text='${item.quantidade}'</span>
+                                                    </span>
                                                 </h4>
                                                 <h4><span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span></h4> 
                                                 <div class="botao-remover">
@@ -56,7 +54,8 @@
                                 <strong><span th:text="${usuario.cliente.nome}"></span></strong><br>
                                 <a href="mailto:#" th:text="${usuario.email}"></a>
                             </address>
-                            <h4><label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span></h4> 
+                            <h4><label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span></h4>
+
                             <a style="width: 100%;" href="#" th:href="@{/checkout}" class="btn btn-warning">Finalizar Compra</a>
                         </div>
                     </div>
