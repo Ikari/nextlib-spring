@@ -78,10 +78,11 @@ public class CheckoutController {
     }
     
     @RequestMapping(value = "/finalizar", method=RequestMethod.POST)
-    public @ResponseBody String finalizar() {        
+    public ModelAndView finalizar() {        
                 
         service.finalizarPedido();
         
-        return "{ }";
+        
+        return new ModelAndView("redirect:/produtos");
     }
 }

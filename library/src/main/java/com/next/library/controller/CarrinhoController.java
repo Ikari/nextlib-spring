@@ -1,7 +1,7 @@
 package com.next.library.controller;
 
 import com.next.library.model.Produto;
-import com.next.library.service.CarrinhoService;
+import com.next.library.service.*;
 import javax.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +22,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/carrinho")
 public class CarrinhoController {
     
-    @Autowired
-    CarrinhoService service;    
+    @Autowired CarrinhoService service;    
+    @Autowired UsuarioService usuarioService;
             
     @RequestMapping
     public ModelAndView carrinho(){        
-        return new ModelAndView("carrinho/carrinho").addObject("carrinho", service.obterCarrinho());
+        return new ModelAndView("carrinho/carrinho")
+                .addObject("carrinho", service.obterCarrinho())
+                .addObject("usuario", usuarioService.obterUsuarioLogado())
+                ;
     }
     
     @RequestMapping(value="/adicionar", method=RequestMethod.POST)    
@@ -46,7 +49,7 @@ public class CarrinhoController {
         
         return new ModelAndView("redirect:/carrinho");
     }
-    
+        
     @RequestMapping("/remover/{id}")    
     public ModelAndView removerProduto(@PathVariable("id") ObjectId produtoId){
                        

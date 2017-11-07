@@ -94,5 +94,9 @@ public class CheckoutService {
     
         Pedido pedido = obterPedido();        
         _repository.save(pedido);
+        
+        _request.getSession().removeAttribute("carrinho");
+        _request.getSession().removeAttribute("pedido");
+        
     }
 }
