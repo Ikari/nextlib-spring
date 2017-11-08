@@ -1,10 +1,22 @@
 $(function(){
     
-    this.init = function(){
-        $(".detalhe").click(this.exibirDetalhes);
+    this.init = function(){                
+        $(".add-carrinho").click(this.adicionarAoCarrinho);
     };   
    
-    this.exibirDetalhes = function(){ $("#content").load("/produtos/detalhe?id=" + $(this).attr("data-id")); };    
+    this.adicionarAoCarrinho = function(){         
+        $.ajax({
+            type: 'GET',
+            url: '/carrinho/adicionar/' + $(this).data("id"),
+            success : function(data){
+                
+            }
+        }).done(function() {
+            alert("Produto adicionado com sucesso!");
+        }).fail(function() {
+            console.log("error");
+        });
+    };    
         
     this.init();    
 });

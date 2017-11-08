@@ -1,6 +1,7 @@
 package com.next.library.controller;
 
 import com.next.library.model.*;
+import com.next.library.repository.IProdutoRepository;
 import com.next.library.service.*;
 import javax.validation.Valid;
 import org.bson.types.ObjectId;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -18,12 +20,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  *
  * @author roger.roliveira
  */
-@Controller
+@RestController
 @RequestMapping("/carrinho")
 public class CarrinhoController {
     
     @Autowired CarrinhoService service;    
     @Autowired UsuarioService usuarioService;
+    @Autowired IProdutoRepository produtoRepository;
             
     @RequestMapping
     public ModelAndView carrinho(){        
@@ -47,6 +50,20 @@ public class CarrinhoController {
                 .addObject("cliente", cliente)
                 .addObject("endereco", endereco)
                 ;
+    }
+
+    @RequestMapping(value="/adicionar/{id}")
+    public boolean adicionarProduto(
+            @PathVariable("id") @Valid ObjectId id){
+                
+        Produto produto = produtoRepository.findOne(id);
+               
+        if (produto == null)
+            return false;
+        
+        service.adicionarProduto(produto, 1);
+        
+        return true;
     }
     
     @RequestMapping(value="/adicionar", method=RequestMethod.POST)    
