@@ -13,6 +13,9 @@ $(function(){
         $("#tabs li").removeClass("active").addClass("inactive");
         a.parent().removeClass("inactive").addClass("active");
         $("#content").load("/checkout/" + a.attr("id")); 
+        
+        if (parseInt(a.attr("id")) === 3)
+            $("#save-and-continue").hide();
     };
     
     this.save = function(){
@@ -24,8 +27,7 @@ $(function(){
                 method: "POST",
                 url: "/checkout/etapa/" + activeTab.attr("id"),
                 data: $("#form-checkout").serialize(),
-                success: function(data){ 
-                    
+                success: function(data){                     
                     $("#" + (parseInt(activeTab.attr("id")) + 1).toString()).click();
                 },
                 error: function(e){ console.log(e); }
