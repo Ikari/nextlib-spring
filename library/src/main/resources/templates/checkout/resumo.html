@@ -26,7 +26,7 @@
                 <div class="col-xs-12 col-sm-12 col-lg-3">
                     <div class="row" style="border: 1px solid graytext">
                         <span><strong>Forma de pagamento escolhida:</strong></span><br>
-                        <span th:text="${pedido.formaPagamento}"></span><br>
+                        <span th:text="${pedido.descricaoFormaPagamento}"></span><br>
                         <span><strong>Total:</strong></span><span th:text="${#numbers.formatCurrency(pedido.valorTotal)}"></span><br>
                         <span><strong>Total + Frete:</strong></span><span th:text="${#numbers.formatCurrency(pedido.valorTotal + 25)}"></span><br>
                     </div>

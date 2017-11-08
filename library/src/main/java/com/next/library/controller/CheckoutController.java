@@ -1,8 +1,7 @@
 package com.next.library.controller;
 
-import com.next.library.dtos.CartaoCredito;
+import com.next.library.dtos.Pagamento;
 import com.next.library.model.Endereco;
-import com.next.library.model.FormaPagamento;
 import com.next.library.model.Pedido;
 import com.next.library.service.CheckoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class CheckoutController {
     
     @RequestMapping("/2")
     public ModelAndView pagamento(){        
-        return new ModelAndView("checkout/pagamento").addObject("cartao", new CartaoCredito());
+        return new ModelAndView("checkout/pagamento").addObject("pagamento", new Pagamento());
     }
     
     @RequestMapping("/3")
@@ -48,7 +47,12 @@ public class CheckoutController {
     
     @RequestMapping("/pedido")
     public ModelAndView pedido(){        
-        return new ModelAndView("checkout/pedido");
+        
+        Pedido pedido = service.obterPedido();
+        
+        service.encerrarPedido();
+        
+        return new ModelAndView("checkout/pedido").addObject("pedido", pedido);
     }
     
     @RequestMapping(value = "/etapa/1", method=RequestMethod.POST)
@@ -65,14 +69,14 @@ public class CheckoutController {
     
     @RequestMapping(value = "/etapa/2", method=RequestMethod.POST)
     public @ResponseBody String salvarPagamento(
-            @ModelAttribute("cartao") CartaoCredito cartao,
+            @ModelAttribute("pagamento") Pagamento pagamento,            
             BindingResult result,
             RedirectAttributes attr
             ) {        
                 
         //valida os dados do cartão, yada yada yada...
         
-        service.indicarFormaPagamento(FormaPagamento.CARTAO_CREDITO);
+        service.indicarFormaPagamento(pagamento.getFormaPagamento());
         
         return "{ }";
     }
@@ -80,9 +84,8 @@ public class CheckoutController {
     @RequestMapping(value = "/finalizar", method=RequestMethod.POST)
     public ModelAndView finalizar() {        
                 
-        service.finalizarPedido();
+        service.finalizarPedido();        
         
-        
-        return new ModelAndView("redirect:/produtos");
+        return new ModelAndView("redirect:/checkout/pedido");
     }
 }

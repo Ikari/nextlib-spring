@@ -103,8 +103,10 @@ public class CheckoutService {
         Pedido pedido = obterPedido();
         pedido.setData(new Date());
         _repository.save(pedido);
-        
+    }
+    
+    public void encerrarPedido(){
         _request.getSession().removeAttribute("carrinho");
-        _request.getSession().removeAttribute("pedido");        
+        _request.getSession().removeAttribute("pedido");
     }
 }

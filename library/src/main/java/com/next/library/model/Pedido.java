@@ -137,4 +137,15 @@ public class Pedido {
         
         return valorTotal;
     }
+    
+    public String getDescricaoFormaPagamento(){
+        switch (this.formaPagamento) {
+            case BOLETO:
+                return "Boleto Bancário";
+            case CARTAO_CREDITO:
+                return "Cartão de Crédito";
+            default:
+                return "Nenhuma forma de pagamento selecionada";
+        }
+    }
 }

@@ -7,6 +7,8 @@ package com.next.library.controller;
 
 import com.next.library.repository.IPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +25,6 @@ public class RelatorioController {
     
     @RequestMapping("/pedidos")
     public ModelAndView carrinho(){        
-        return new ModelAndView("relatorios/pedidos").addObject("pedidos", _repository.findAll());
+        return new ModelAndView("relatorios/pedidos").addObject("pedidos", _repository.findAll(new Sort(Direction.DESC, "data")));
     }
 }

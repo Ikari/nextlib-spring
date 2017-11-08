@@ -18,32 +18,31 @@
                                 </a>
                             </div>
                         </div>                        
-                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 next-tab">
-                            <div class="next-tab-content active">
-                                <center>
-                                    <form  id="form-checkout" method="POST" th:object="${cartao}" class="form-signin" novalidate>
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 next-tab">                            
+                            <form  id="form-checkout" method="POST" th:object="${pagamento}" class="form-signin" novalidate>
+                                <input type="hidden" id="formaPagamento" name="formaPagamento" th:field="*{formaPagamento}" />
+                                <div class="next-tab-content active" data-fp="CARTAO_CREDITO">
+                                    <center>
                                         <div id="cartao" class="col-xs-12 col-sm-12">
                                             <div class="row">
-                                                <input type="text" name="numero" th:field="*{numero}" maxlength="16" th:placeholder="Número" class="form-control" required="" />
-                                                <input type="text" name="validade" th:field="*{validade}" maxlength="4"th:placeholder="Validade" class="form-control" required="" />
-                                                <input type="text" name="titular" th:field="*{titular}" maxlength="20" th:placeholder="Titular" class="form-control" required="" />
-                                                <input type="text" name="ccv" th:field="*{ccv}" maxlength="3"th:placeholder="CCV" class="form-control" />
+                                                <input type="text" name="numero" th:field="*{cartao.numero}" maxlength="16" th:placeholder="Número" class="form-control" required="" />
+                                                <input type="text" name="validade" th:field="*{cartao.validade}" maxlength="4"th:placeholder="Validade" class="form-control" required="" />
+                                                <input type="text" name="titular" th:field="*{cartao.titular}" maxlength="20" th:placeholder="Titular" class="form-control" required="" />
+                                                <input type="text" name="ccv" th:field="*{cartao.ccv}" maxlength="3"th:placeholder="CCV" class="form-control" />
                                             </div>
                                         </div>
-                                    </form>
-                                </center>
-                            </div>
-                            <div class="next-tab-content">
-                                <center>
-                                    <form id="form-boleto"  method="POST" class="form-signin" novalidate>                
-                                        <div id="boleto" class="col-xs-9 col-sm-6" style="display: none;">
+                                    </center>
+                                </div>
+                                <div class="next-tab-content" data-fp="BOLETO">
+                                    <center>
+                                        <div id="boleto" class="col-xs-9 col-sm-6">
                                             <div class="row">
-                                               <!--<input type="text" name="ccv" th:field="*{ccv}" maxlength="0"th:placeholder="INDISPONIVEL" class="form-control" />-->
+                                               O Boleto será impresso ao finalizar o pedido.
                                             </div>
                                         </div>                
-                                    </form>
-                                </center>
-                            </div>
+                                    </center>
+                                </div>
+                            </form>                            
                         </div>          
                         <script src="../../../resources/js/pages/pagamento.js" type="text/javascript"></script>                        
                     </div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>PEDIDO FINALIZADO!</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <div class="row">
+                        <h3>PEDIDO CONCLUÍDO COM SUCESSO!</h2>
+                    </div>
+                </div>              
+                <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <div class="row">
+                        <h2 th:text="'O número de protocolo do seu pedido é ' + ${pedido.numero}"></h2>
+                    </div>
+                </div>              
+                <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <div class="row" style="border: 1px solid graytext">
+                        <span><strong>Forma de pagamento escolhida:</strong></span><br>
+                        <span th:text="${pedido.descricaoFormaPagamento}"></span><br>
+                    </div>
+                </div>                
+                <div class="col-xs-12 col-sm-12 col-lg-12" th:if="${pedido.descricaoFormaPagamento == 'Boleto Bancário'}">
+                    <div class="row" style="border: 1px solid graytext">
+                        <span><strong><a th:href="@{/checkout/boleto}">Clique aqui para imprimir seu boleto!</a></strong></span><br>
+                    </div>
+                </div>         
+            </div>
+        </div>
+    </body>
+</html>
