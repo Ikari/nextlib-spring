@@ -54,8 +54,9 @@
                                 <strong><span th:text="${usuario.cliente.nome}"></span></strong><br>
                                 <a href="mailto:#" th:text="${usuario.email}"></a>
                             </address>
-                            <h4><label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span></h4>
-
+                            <div class="preco-carrinho">
+                                <label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span>
+                            </div>
                             <a style="width: 100%;" href="#" th:href="@{/checkout}" class="btn btn-warning">Finalizar Compra</a>
                         </div>
                     </div>

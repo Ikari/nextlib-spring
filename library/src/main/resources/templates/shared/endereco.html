@@ -5,13 +5,15 @@
     </head>
     <body>
         <div th:fragment="endereco">
-                <br>                                
-                Nome (identificação deste endereço):<input type="text" name="nome" th:field="*{nome}" th:placeholder="NOME" class="form-control" required />
+                <br>    
+                <div class="col-lg-12">
+                Nome (identificação deste endereço):<input type="text" name="nome" th:field="*{nome}" th:placeholder="NOME" class="form-control" required="" />
                 CEP:<input type="text" name="cep" th:field="*{cep}" th:placeholder="CEP" class="form-control" required />
-                Logradouro / Número:<input type="text" name="logradouro" th:field="*{logradouro}" th:placeholder="Logradouro" class="form-control" required />
+                Logradouro / Número:<input type="text" name="logradouro" th:field="*{logradouro}" th:placeholder="Logradouro" class="form-control" required="" />
                 Complemento: <input type="text" name="complemento" th:field="*{complemento}" th:placeholder="Complemento" class="form-control" />
-                Cidade:<input type="text" name="cidade" th:field="*{cidade}" th:placeholder="Cidade" class="form-control" />
-                Estado (Sigla):<input type="text" name="estado" th:field="*{estado}" th:placeholder="UF" class="form-control" />
+                Cidade:<input type="text" name="cidade" th:field="*{cidade}" th:placeholder="Cidade" class="form-control" required=""/>
+                Estado (Sigla):<input type="text" name="estado" th:field="*{estado}" th:placeholder="UF" class="form-control" required="" />
+                </div>
             </div>
     </body>
 </html>
