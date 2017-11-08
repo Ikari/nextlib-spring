@@ -5,6 +5,9 @@ import com.next.library.model.FormaPagamento;
 import com.next.library.model.Pedido;
 import com.next.library.model.Usuario;
 import com.next.library.repository.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -55,7 +58,7 @@ public class CheckoutService {
         
         pedido.setCliente(usuario.getCliente());
         
-        _repository.save(pedido);
+        //_repository.save(pedido);
         
         salvarSession(pedido);
         
@@ -92,11 +95,11 @@ public class CheckoutService {
     
     public void finalizarPedido() {
     
-        Pedido pedido = obterPedido();        
+        Pedido pedido = obterPedido();    
+        pedido.setData(new Date());
         _repository.save(pedido);
         
-       // _request.getSession().removeAttribute("carrinho");
-        //_request.getSession().removeAttribute("pedido");
-        
+        _request.getSession().removeAttribute("carrinho");
+        _request.getSession().removeAttribute("pedido");        
     }
 }
