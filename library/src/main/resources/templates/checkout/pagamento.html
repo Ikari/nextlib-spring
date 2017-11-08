@@ -24,10 +24,10 @@
                                     <form  id="form-checkout" method="POST" th:object="${cartao}" class="form-signin" novalidate>
                                         <div id="cartao" class="col-xs-12 col-sm-12">
                                             <div class="row">
-                                                <input type="text" name="numero" th:field="*{numero}" th:placeholder="Número" class="form-control" required="" />
-                                                <input type="text" name="validade" th:field="*{validade}" th:placeholder="Validade" class="form-control" required="" />
-                                                <input type="text" name="titular" th:field="*{titular}" th:placeholder="Titular" class="form-control" required="" />
-                                                <input type="text" name="ccv" th:field="*{ccv}" th:placeholder="CCV" class="form-control" />
+                                                <input type="text" name="numero" th:field="*{numero}" maxlength="16" th:placeholder="Número" class="form-control" required="" />
+                                                <input type="text" name="validade" th:field="*{validade}" maxlength="4"th:placeholder="Validade" class="form-control" required="" />
+                                                <input type="text" name="titular" th:field="*{titular}" maxlength="20" th:placeholder="Titular" class="form-control" required="" />
+                                                <input type="text" name="ccv" th:field="*{ccv}" maxlength="3"th:placeholder="CCV" class="form-control" />
                                             </div>
                                         </div>
                                     </form>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="next-tab-content">
                                 <center>
-                                    <form id="form-boleto" method="POST" class="form-signin" novalidate>                
+                                    <form id="form-boleto"  method="POST" class="form-signin" novalidate>                
                                         <div id="boleto" class="col-xs-9 col-sm-6" style="display: none;">
                                             <div class="row">
                                                 INDISPONÍVEL :(
