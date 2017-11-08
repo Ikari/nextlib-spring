@@ -1,0 +1,41 @@
+.stylegeral h3,
+.stylegeral h4,
+.stylegeral strong,
+.stylegeral p{
+    font-family: roboto; 
+}
+.limite_texto_nome{
+    height: 10ch;
+    text-overflow:ellpsis;
+}
+
+.limite_texto_descricao{
+    overflow:hidden;
+    height: 8ch;
+    text-overflow: ellipsis;
+}
+.limite_texto_preco{
+
+    overflow:hidden;
+    text-overflow:clip; 
+    height: 12ch;
+}
+
+.img-responsive-produtos{
+    height: 100%;
+    width: 100%; 
+    display: block; 
+    padding-top:10px;
+}
+
+.stylegeral a{
+    width: 50%;    
+}
+
+#tamanho-preco{
+    font-size:13px; 
+}
+
+.span{
+ color: gray;   
+}

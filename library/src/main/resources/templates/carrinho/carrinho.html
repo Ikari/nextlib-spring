@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Carrinho</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container stylegeral">                
+                <div class="col-xs-12 col-sm-9">
+                    <div class="bs-example" data-example-id="panel-without-body-with-table"> 
+                        <div class="panel panel-default"> 
+                            <!--<div class="panel-heading">Itens Carrinho</div>
+                            -->
+                            <table class="table">
+                                <div class= "col-xs-12 col-sm-8 col-md-9 ng-scope">
+                                    
+                                    <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 400px; font-size:2em; text-align: center">
+                                        <p class="bg-warning">Seu carrinho está vazio :(</p>
+                                    </div>
+                                    
+                                    <div th:each='item : ${carrinho.produtos}'> 
+                                        <div scope="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-3">
+                                                <img style="padding: 2px; padding-top: 3px;" th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="100%" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}">            
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-9">
+                                                <h4 th:text='${item.produto.nome}'></h4>
+                                                <h4>
+                                                    <!--<span class="label label-default">Quantidade.</span>
+                                                    <input type="number" th:value="${item.quantidade}" />-->
+                                                    <span class="label label-default">
+                                                        Quantidade. <span th:text='${item.quantidade}'</span>
+                                                    </span>
+                                                </h4>
+                                                <h4><span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span></h4> 
+                                                <div class="botao-remover">
+                                                    <a href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}" class="btn btn-warning">Remover</a>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                    
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 ng-scope">        
+                    <div class="panel panel-default">
+                        <div class="panel-body"> 
+                            <div th:if="${endereco != null}">
+                                <address>
+                                    <strong>Endereço</strong><br>
+                                    <span th:text="${endereco.logradouro}"></span><br>
+                                    <span th:text="${endereco.cidade}"></span>, <span th:text="${endereco.cep}"></span><br>
+                                    <abbr title="Telefone">Fone:</abbr> <span th:text="${cliente.telefone}"></span>
+                                </address>
+                                <address>
+                                    <strong><span th:text="${cliente.nome}"></span></strong><br>
+                                    <a href="mailto:#" th:text="${usuario.email}"></a>
+                                </address>
+                                <br>
+                                <address>
+                                    <strong><span></span>Frete fixo para todo Brasil: R$25,00</strong><br>
+                                </address>
+                            </div>
+                            <div th:if="${endereco == null}">
+                                <address>
+                                    <strong>Faça login para exibir seus dados padrão.</strong>
+                                </address>
+                            </div>                            
+                            <div class="preco-carrinho">
+                                <label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span><br>
+                                <label>Total + Frete:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal + 25)}">R$0,00</span>
+                            </div>
+                            <a style="width: 100%;" href="#" th:href="@{/checkout}" class="btn btn-warning">Finalizar Compra</a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </body>
+</html>

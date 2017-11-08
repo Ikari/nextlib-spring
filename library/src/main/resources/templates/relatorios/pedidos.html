@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <h3 class="form-signin-heading">Lista de pedidos</h3>
+                <br />
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Protocolo</th>
+                                <th>Data da Compra</th>
+                                <th>Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr scope="row" th:each="pedido : ${pedidos}">
+                                <td th:text="${pedido.numero}"></td>
+                                <td th:text="${#calendars.format(pedido.data,'dd MMMM yyyy HH:mm')}"></td>
+                                <td th:text="${pedido.cliente.nome}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+            </div>                
+        </div>
+    </body>
+</html>

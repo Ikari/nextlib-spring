@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Detalhe do Produto</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container stylegeral">      
+                <div class="bs-example" data-example-id="simple-jumbotron">
+                    <div class="col-xs-12 ol-sm-6 col-md-12 ng-scope">
+                        <form action="#" th:action="@{/carrinho/adicionar}" method="POST">
+                            <input type="hidden" name="id" th:value="${produto.id}"/>
+                            <div class="col-md-3 col-sm-5 col-xs-12">
+                                <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" width="100%" th:alt="${produto.alt}" th:title="${produto.titulo}">
+                            </div>
+                            <div class="caption">
+                                <div class="col-md-6 col-sm-7 col-xs-12">                                    
+                                    <h3 th:text='${produto.nome}'></h3>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-6 ng-scope">        
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <address>
+                                                <strong>Autor: </strong>
+                                                J. K. Rowling <br>
+                                                <strong>Data de publicação: </strong>
+                                                18 de novembro de 2016<br>
+                                                <strong>Gênero:</strong>
+                                                Literatura fantástica<br>
+                                            </address>
+                                        </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <h4><p style="font-size:25px;" th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
+                                            </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="col-md-6 col-sm-7 col-xs-12">                                        
+                                                <p><a style="width: 200px" href="#" class="btn btn-warning adicionar" onclick="document.forms[0].submit()" role="button">Adicionar ao Carrinho</a></p>
+                                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12 col-sm-7 col-xs-12" style="padding-top: 20px">    
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Descrição
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <p th:text='${produto.descricao}'></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <!--<script src="../../resources/js/pages/detalhe.js" type="text/javascript"></script>-->
+        </div> 
+    </body>
+</html>
