@@ -5,7 +5,7 @@
     </head>
     <body>
         <div layout:fragment="conteudo">
-            <div class="container formulario login">
+            <div class="container">
                 <h3 class="form-signin-heading">Lista de produtos</h3>
                 <br />
                 <div class="alert alert-success" th:if="${msgSucesso != null}">
@@ -15,7 +15,7 @@
                     <h2 th:text="${msgErro}"></h2>
                 </div>
                 <div>
-                    <table>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>NOME</th>
@@ -24,7 +24,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="produto : ${produtos}">
+                            <tr scope="row" th:each="produto : ${produtos}">
                                 <td th:text="${produto.nome}"></td>
                                 <td th:text="${produto.preco}"></td>
                                 <td><a th:href="@{/admin/produto/cadastro/{id}(id=${produto.id})}">Editar</a></td>
