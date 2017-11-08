@@ -1,6 +1,6 @@
 package com.next.library.controller;
 
-import com.next.library.model.Produto;
+import com.next.library.model.*;
 import com.next.library.service.*;
 import javax.validation.Valid;
 import org.bson.types.ObjectId;
@@ -27,9 +27,25 @@ public class CarrinhoController {
             
     @RequestMapping
     public ModelAndView carrinho(){        
+                
+        Usuario usuario = usuarioService.obterUsuarioLogado();
+        
+        if (usuario == null)
+            return new ModelAndView("carrinho/carrinho")
+                .addObject("carrinho", service.obterCarrinho())
+                .addObject("usuario", null)
+                .addObject("cliente", null)
+                .addObject("endereco", null)
+                ;
+        
+        Cliente cliente = usuario.getCliente();
+        Endereco endereco = cliente.getEnderecos().get(0);
+                
         return new ModelAndView("carrinho/carrinho")
                 .addObject("carrinho", service.obterCarrinho())
-                .addObject("usuario", usuarioService.obterUsuarioLogado())
+                .addObject("usuario", usuario)
+                .addObject("cliente", cliente)
+                .addObject("endereco", endereco)
                 ;
     }
     

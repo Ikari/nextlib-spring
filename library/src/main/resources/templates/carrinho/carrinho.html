@@ -13,6 +13,11 @@
                             -->
                             <table class="table">
                                 <div class= "col-xs-12 col-sm-8 col-md-9 ng-scope">
+                                    
+                                    <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 400px; font-size:3em; text-align: center">
+                                        Seu carrinho está vazio :(
+                                    </div>
+                                    
                                     <div th:each='item : ${carrinho.produtos}'> 
                                         <div scope="row">
                                             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -42,20 +47,31 @@
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-3 ng-scope">        
                     <div class="panel panel-default">
-                        <div class="panel-body">                           
-                            <address>
-                                <strong>Endereço</strong><br>
-                                Rua São Miguel dos Milagres, 80<br>
-                                São Paulo, BR 02812-10<br>
-                                <abbr title="Telefone">Fone:</abbr> (11)988997766
-                            </address>
-
-                            <address>
-                                <strong><span th:text="${usuario.cliente.nome}"></span></strong><br>
-                                <a href="mailto:#" th:text="${usuario.email}"></a>
-                            </address>
+                        <div class="panel-body"> 
+                            <div th:if="${endereco != null}">
+                                <address>
+                                    <strong>Endereço</strong><br>
+                                    <span th:text="${endereco.logradouro}"></span><br>
+                                    <span th:text="${endereco.cidade}"></span>, <span th:text="${endereco.cep}"></span><br>
+                                    <abbr title="Telefone">Fone:</abbr> <span th:text="${cliente.telefone}"></span>
+                                </address>
+                                <address>
+                                    <strong><span th:text="${cliente.nome}"></span></strong><br>
+                                    <a href="mailto:#" th:text="${usuario.email}"></a>
+                                </address>
+                                <br>
+                                <address>
+                                    <strong><span></span>Frete fixo para todo Brasil: R$25,00</strong><br>
+                                </address>
+                            </div>
+                            <div th:if="${endereco == null}">
+                                <address>
+                                    <strong>Faça login para exibir seus dados padrão.</strong>
+                                </address>
+                            </div>                            
                             <div class="preco-carrinho">
-                                <label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span>
+                                <label>Total:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal)}">R$0,00</span><br>
+                                <label>Total + Frete:</label><span th:text="${#numbers.formatCurrency(carrinho.valorTotal + 25)}">R$0,00</span>
                             </div>
                             <a style="width: 100%;" href="#" th:href="@{/checkout}" class="btn btn-warning">Finalizar Compra</a>
                         </div>
