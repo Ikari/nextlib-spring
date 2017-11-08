@@ -1,19 +1,18 @@
 package com.next.library.service;
 
+import com.next.library.model.Carrinho;
 import com.next.library.model.Endereco;
 import com.next.library.model.FormaPagamento;
 import com.next.library.model.Pedido;
+import com.next.library.model.Produto;
+import com.next.library.model.ProdutoCarrinho;
 import com.next.library.model.Usuario;
 import com.next.library.repository.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,6 +25,7 @@ public class CheckoutService {
 
     @Autowired HttpServletRequest _request;
     @Autowired UsuarioService _usuarioService;
+    @Autowired CarrinhoService _carrinhoService;
     @Autowired IPedidoRepository _repository;
     @Autowired IEnderecoRepository _endRepository;
     @Autowired IUsuarioRepository _usuarioRepository;
@@ -57,6 +57,11 @@ public class CheckoutService {
         Usuario usuario = _usuarioService.obterUsuarioLogado();
         
         pedido.setCliente(usuario.getCliente());
+        
+        Carrinho carrinho = _carrinhoService.obterCarrinho();
+
+        for (ProdutoCarrinho produto : carrinho.getProdutos())
+            pedido.adicionarItem(produto.getProduto(), produto.getQuantidade());
         
         //_repository.save(pedido);
         
@@ -95,7 +100,7 @@ public class CheckoutService {
     
     public void finalizarPedido() {
     
-        Pedido pedido = obterPedido();    
+        Pedido pedido = obterPedido();
         pedido.setData(new Date());
         _repository.save(pedido);
         

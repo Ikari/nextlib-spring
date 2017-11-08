@@ -12,8 +12,8 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-3">
-                    <div class="row">
-                        <span><strong>Endereço de Entrega</strong></span><br>
+                    <div class="row" style="border: 1px solid graytext">
+                        <span><strong>Endereço de Entrega:</strong></span><br>
                         <span th:text="${pedido.enderecoEntrega.cep}"></span><br>
                         <span th:text="${pedido.enderecoEntrega.logradouro}"></span><br>
                         <span th:text="${pedido.enderecoEntrega.complemento}"></span><br>
@@ -24,9 +24,11 @@
                     </div>
                 </div>                
                 <div class="col-xs-12 col-sm-12 col-lg-3">
-                    <div class="row">
-                        <span><strong>Forma de pagamento</strong></span><br>
-                        <span th:text="${pedido.formaPagamento}"></span>
+                    <div class="row" style="border: 1px solid graytext">
+                        <span><strong>Forma de pagamento escolhida:</strong></span><br>
+                        <span th:text="${pedido.formaPagamento}"></span><br>
+                        <span><strong>Total:</strong></span><span th:text="${#numbers.formatCurrency(pedido.valorTotal)}"></span><br>
+                        <span><strong>Total + Frete:</strong></span><span th:text="${#numbers.formatCurrency(pedido.valorTotal + 25)}"></span><br>
                     </div>
                 </div>                
                 <div class="col-xs-12 col-sm-12 col-lg-12">

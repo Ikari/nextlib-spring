@@ -23,6 +23,12 @@ public class ItemPedido implements Serializable {
     private Double valorUnitario;
     private int quantidade;
 
+    public ItemPedido(Produto produto, int quantidade){
+        this.produto = produto;
+        this.valorUnitario = produto.getPreco();
+        this.quantidade = quantidade;
+    }
+    
     /**
      * @return the id
      */

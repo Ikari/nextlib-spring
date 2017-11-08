@@ -1,5 +1,6 @@
 package com.next.library.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -18,9 +19,13 @@ public class Pedido {
     private long numero;
     private @DBRef Cliente cliente;
     private Date data;
-    private @DBRef List<ItemPedido> itens;
+    private List<ItemPedido> itens;
     private FormaPagamento formaPagamento;
     private @DBRef Endereco enderecoEntrega;
+    
+    public Pedido(){
+        this.itens = new ArrayList<>();
+    }
     
     /**
      * @return the id
@@ -118,5 +123,18 @@ public class Pedido {
      */
     public void setEnderecoEntrega(Endereco enderecoEntrega) {
         this.enderecoEntrega = enderecoEntrega;
+    }
+    
+    public void adicionarItem(Produto produto, int quantidade){        
+        this.itens.add(new ItemPedido(produto, quantidade));
+    }
+    
+    public double getValorTotal(){
+        double valorTotal = 0;
+        
+        for (ItemPedido item : itens)
+            valorTotal += item.getQuantidade() * item.getValorUnitario();
+        
+        return valorTotal;
     }
 }
