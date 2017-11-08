@@ -14,8 +14,8 @@
                             <table class="table">
                                 <div class= "col-xs-12 col-sm-8 col-md-9 ng-scope">
                                     
-                                    <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 400px; font-size:3em; text-align: center">
-                                        Seu carrinho está vazio :(
+                                    <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 400px; font-size:2em; text-align: center">
+                                        <p class="bg-warning">Seu carrinho está vazio :(</p>
                                     </div>
                                     
                                     <div th:each='item : ${carrinho.produtos}'> 

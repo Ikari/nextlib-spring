@@ -6,22 +6,25 @@
     <body>
         <div layout:fragment="conteudo">
             <div class="container">
-                <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row">
-                        <h3>PEDIDO CONCLUÍDO COM SUCESSO!</h2>
+                        <h3 style="margin-left: 20px;">Pedido Concluído Com Sucesso!</h3>
+                        <hr style="width:90%; ">
                     </div>
-                </div>              
-                <div class="col-xs-12 col-sm-12 col-lg-12">
+                </div> 
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row">
-                        <h2 th:text="'O número de protocolo do seu pedido é ' + ${pedido.numero}"></h2>
+                        <h4 style="margin-left: 20px;"th:text="'O número de protocolo do seu pedido é '+ ${pedido.numero}"></h4>
                     </div>
-                </div>              
-                <div class="col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row" style="border: 1px solid graytext">
-                        <span><strong>Forma de pagamento escolhida:</strong></span><br>
-                        <span th:text="${pedido.descricaoFormaPagamento}"></span><br>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body" style="margin-left:10px;">
+                        <div class="col-xs-12 col-sm-4 col-md-12 ng-scope">        
+                            <span><strong style="color: #555">Forma de pagamento escolhida:</strong></span><br>
+                            <h4><span class="glyphicon glyphicon-credit-card" style="margin-right: 2px;"></span><span th:text="${pedido.descricaoFormaPagamento}"></span><br></h4>
+                        </div> 
                     </div>
-                </div>                
+                </div>
                 <div class="col-xs-12 col-sm-12 col-lg-12" th:if="${pedido.descricaoFormaPagamento == 'Boleto Bancário'}">
                     <div class="row" style="border: 1px solid graytext">
                         <span><strong><a th:href="@{/checkout/boleto}">Clique aqui para imprimir seu boleto!</a></strong></span><br>
