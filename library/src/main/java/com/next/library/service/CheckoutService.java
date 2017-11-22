@@ -10,6 +10,7 @@ import com.next.library.model.Usuario;
 import com.next.library.repository.*;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -52,7 +53,8 @@ public class CheckoutService {
     private Pedido criarPedido(){
         
         Pedido pedido = new Pedido();
-        pedido.setNumero(System.currentTimeMillis());        
+        pedido.setNumero(System.currentTimeMillis());
+        pedido.setEstado(0);
                 
         Usuario usuario = _usuarioService.obterUsuarioLogado();
         
@@ -102,6 +104,7 @@ public class CheckoutService {
     
         Pedido pedido = obterPedido();
         pedido.setData(new Date());
+        pedido.setUltimaAtualizacao(new Date());
         _repository.save(pedido);
     }
     
