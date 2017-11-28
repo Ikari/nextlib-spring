@@ -6,20 +6,21 @@
     </head>
     <body>
         <div layout:fragment="conteudo">
-            
+
             <div class="container formulario login">        
                 <form th:action="@{/login}" method="POST" class="form-signin">                
-                    <h3 class="form-signin-heading">Bem vindo!</h3>
+                    <h3 class="form-signin-heading">L O G I N</h3>
+                    <hr>
                     <br />
                     <input type="text" id="email" name="email" th:placeholder="email" class="form-control">
-                    <input type="password" id="password" name="password" th:placeholder="password" class="form-control">
-                    <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Login" type="submit" th:text="Login"></button>
+                    <input type="password" id="password" name="password" th:placeholder="password" class="form-control" >
+                        <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Login" type="submit" th:text="Login"></button>
+              
                 </form>
                 <form th:action="@{/login/cadastro/1}">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Cadastre-se</button>
-            </form>
+                    <button class="btn btn-md btn-warning btn-block" type="Submit">Cadastre-se</button>
+                </form>
             </div>
-            
         </div>
-    </body>
+</body>
 </html>

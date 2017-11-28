@@ -8,6 +8,7 @@
             <div class="container formulario login">
                 <form th:action="@{/login/cadastrar/1}" th:object="${usuario}" method="POST" class="form-group form-group-sm">
                     <h3 class="form-signin-heading">Cadastro de usuário</h3>
+                        <hr>
                     <br />
                     <input type="email" name="email" th:field="*{email}" th:placeholder="E-mail" class="form-control" required="">
                     <input type="password" name="password" th:field="*{password}" th:placeholder="Senha" class="form-control" required="">
