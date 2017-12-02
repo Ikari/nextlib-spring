@@ -5,6 +5,7 @@
       xmlns:sec="http://www.springframework.org/security/tags">
     <head>
         <title>Livraria NEXT</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&subset=cyrillic,latin,greek,vietnamese">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../../../resources/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
@@ -19,7 +20,7 @@
     <body>
         <!--  <a href="#" class="navbar-brand"> <img alt="Brand" height="23" src="http://sweda.com.br/wp-content/uploads/2015/03/icones_varejo_2016_livraria1.png" width="23"> </a>-->
         <nav class="navbar navbar-default navbar-static-top">
-            <a href="#" class="navbar-brand"> <img class="center-block" height="20" src="https://cloudnext.withgoogle.com/static/images/logos/logo-next-sans-cloud.svg" width="60px" style="padding-left: "> </a>
+            <a href="#" class="navbar-brand"> <img class="center-block" height="20" src="https://cloudnext.withgoogle.com/static/images/logos/logo-next-sans-cloud.svg" width="60px" style="padding-left: 5px "> </a>
             <div class="container"><!--fluid-->
 
                 <div class="navbar-header">
@@ -57,9 +58,9 @@
                                     <!--<h1 sec:authentication="principal.email"></h1>-->
                                     <a sec:authentication="principal.email" th:href="@{/logout}" title="Log In"><i class="glyphicon glyphicon-user"> Logout </i></a>
                                 </li>
-
                             </ul>
                         </div>
+                        
                     </div>
                 </div>
             </div>

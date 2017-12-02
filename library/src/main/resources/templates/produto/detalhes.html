@@ -7,7 +7,7 @@
         <div layout:fragment="conteudo">
             <div class="container stylegeral">      
                 <div class="bs-example" data-example-id="simple-jumbotron">
-                    <div class="col-xs-12 ol-sm-6 col-md-12 ng-scope">
+                   <!-- <div class="col-xs-12 col-sm-12 col-md-12 ng-scope">-->
                         <form action="#" th:action="@{/carrinho/adicionar}" method="POST">
                             <input type="hidden" name="id" th:value="${produto.id}"/>
                             <div class="col-md-3 col-sm-5 col-xs-12">
@@ -19,7 +19,7 @@
                                     <hr>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-4 col-md-6 ng-scope">        
+                            <div class="col-xs-12 col-sm-7 col-md-6 ng-scope">        
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="col-md-12">
@@ -32,22 +32,20 @@
                                                 Literatura fantástica<br>
                                             </address>
                                         </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <h4><p style="font-size:25px;" th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
-                                            </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div class="col-md-6 col-sm-7 col-xs-12">                                        
-                                                <p><a style="width: 200px" href="#" class="btn btn-warning adicionar" onclick="document.forms[0].submit()" role="button">Adicionar ao Carrinho</a></p>
-                                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                                </div>
-                                            </div>
+                                        <div class="col-md-6 col-sm-5 col-xs-12">
+                                            <h4><p style="font-size:25px;" th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-7 col-xs-12">
+                                            <p><a style="width: 200px" href="#" class="btn btn-warning adicionar" onclick="document.forms[0].submit()" role="button">Adicionar ao Carrinho</a></p>
+                                            <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="col-md-12 col-sm-7 col-xs-12" style="padding-top: 20px">    
+                   <!-- </div>-->
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">    
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
