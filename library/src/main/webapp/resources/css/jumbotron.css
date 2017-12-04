@@ -2,18 +2,15 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "roboto";
 }
 
 h5, h4, h3{
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "roboto";
 }
 html{
     font-size: 13px;
     background-color: blue; 
-}
-img{
-    max-width: 100%;
 }
 p{
     max-width: 15ch;

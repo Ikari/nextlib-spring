@@ -2,30 +2,33 @@
 .stylegeral h4,
 .stylegeral strong,
 .stylegeral p{
-    font-family: roboto; 
+    font-family: "roboto", Helvetica, Arial, sans-serif; 
 }
 .limite_texto_nome{
-    height: 10ch;
+    height: 1ch;
     text-overflow:ellpsis;
 }
 
-.limite_texto_descricao{
+.descricao_produtos{
+    margin: 0px 10px;
+    line-height: 1.5;
+    color: #555;
     overflow:hidden;
-    height: 8ch;
-    text-overflow: ellipsis;
+    height: 10ch;
+    text-align: center;
 }
 .limite_texto_preco{
-
     overflow:hidden;
     text-overflow:clip; 
-    height: 12ch;
+    height: 0.7ch;
 }
 
-.img-responsive-produtos{
-    height: 100%;
+.img-responsive{
+    height: 300px;
     width: 100%; 
     display: block; 
-    padding-top:10px;
+    opacity: 0.9;
+    vertical-align: middle; 
 }
 
 .stylegeral a{
@@ -37,20 +40,17 @@
 }
 
 .span{
- color: gray;   
+    color: gray;   
 }
 
 #logout-style{
     color: #000000;
 }
+.background-style{
+    background: rgb(240, 240, 240)
 
-#logo-usuario-style{
- 
-    
 }
 
-#services{
-    background: #414141;
-    color:#ffffff;
-    
+.style-produtos{
+    padding: 0 20px;
 }

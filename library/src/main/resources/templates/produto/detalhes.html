@@ -11,7 +11,7 @@
                         <form action="#" th:action="@{/carrinho/adicionar}" method="POST">
                             <input type="hidden" name="id" th:value="${produto.id}"/>
                             <div class="col-md-3 col-sm-5 col-xs-12">
-                                <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" width="100%" th:alt="${produto.alt}" th:title="${produto.titulo}">
+                                <img class="img-responsive" th:src="@{'data:image/jpeg;base64,'+${produto.base64Imagem}}" width="100%" th:alt="${produto.alt}" th:title="${produto.titulo}" style="height:330px">
                             </div>
                             <div class="caption">
                                 <div class="col-md-6 col-sm-7 col-xs-12">                                    
@@ -36,7 +36,7 @@
                                             <h4><p style="font-size:25px;" th:text='${#numbers.formatCurrency(produto.preco)}'></span></h4>
                                         </div>
                                         <div class="col-md-6 col-sm-7 col-xs-12">
-                                            <p><a style="width: 200px" href="#" class="btn btn-warning adicionar" onclick="document.forms[0].submit()" role="button">Adicionar ao Carrinho</a></p>
+                                            <p><a style="width: 170px" href="#" class="btn btn-warning adicionar" onclick="document.forms[0].submit()" role="button">Adicionar ao Carrinho</a></p>
                                             <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                             </div>-->
                                         </div>

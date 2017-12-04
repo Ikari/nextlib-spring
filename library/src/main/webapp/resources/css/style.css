@@ -1,0 +1,71 @@
+.mbr-plan {
+  padding-bottom: 41px;
+  padding-left: 1px;
+  padding-right: 0;
+  position: relative;
+}
+.mbr-plan--first,
+.mbr-plan:first-child {
+  padding-left: 0;
+}
+
+.mbr-plan__box {
+  background:#ffffff;
+}
+.mbr-plan__number {
+  border-bottom: 1px dotted #ddd;
+  color: #333;
+  font-size: 80px;
+  line-height: 0;
+  margin: 0px 10px;
+  padding: 41px 0;
+  text-align: center;
+}
+.mbr-plan__details {
+  padding-bottom: 41px;
+}
+.mbr-plan__item {
+  line-height: 40px;
+  padding: 0 15px;
+}
+.mbr-plan__item {
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .mbr-plan,
+  .mbr-plan--first,
+  .mbr-plan:first-child {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .mbr-plan__number {
+    font-size: 79px;
+  }
+  .mbr-plan__details {
+    font-size: 17px;
+  }
+  .mbr-plan--favorite {
+    margin: 0;
+    top: 0;
+  }
+}
+.mbr-img__caption {
+  display: block;
+  font-size: 0.19em;
+  line-height: 1em;
+  opacity: 0.9;
+}
+
+.mbr-plan__number {
+  border-bottom: 1px dotted #ddd;
+  color: #333;
+  font-size: 80px;
+  line-height: 0;
+  margin: 0px 10px;
+  padding: 41px 0;
+  text-align: center;
+}
+.mbr-position {
+  display: inline-block;
+  margin-top: -0.12em;
+}   
