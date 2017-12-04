@@ -32,7 +32,7 @@ public class MainController {
         criarAdmin();
         
         return new ModelAndView("redirect:/produtos");
-    }
+    }     
     
     private void criarRegras(){
         

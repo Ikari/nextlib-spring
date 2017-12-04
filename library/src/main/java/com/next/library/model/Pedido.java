@@ -19,6 +19,9 @@ public class Pedido {
     private long numero;
     private @DBRef Cliente cliente;
     private Date data;
+    private Date ultimaAtualizacao;
+    private String status;
+    private int estado;
     private List<ItemPedido> itens;
     private FormaPagamento formaPagamento;
     private @DBRef Endereco enderecoEntrega;
@@ -126,20 +129,20 @@ public class Pedido {
     }
     
     public void adicionarItem(Produto produto, int quantidade){        
-        this.itens.add(new ItemPedido(produto, quantidade));
+        this.getItens().add(new ItemPedido(produto, quantidade));
     }
     
     public double getValorTotal(){
         double valorTotal = 0;
         
-        for (ItemPedido item : itens)
+        for (ItemPedido item : getItens())
             valorTotal += item.getQuantidade() * item.getValorUnitario();
         
         return valorTotal;
     }
     
     public String getDescricaoFormaPagamento(){
-        switch (this.formaPagamento) {
+        switch (this.getFormaPagamento()) {
             case BOLETO:
                 return "Boleto Bancário";
             case CARTAO_CREDITO:
@@ -147,5 +150,68 @@ public class Pedido {
             default:
                 return "Nenhuma forma de pagamento selecionada";
         }
+    }
+
+    /**
+     * @return the ultimaAtualizacao
+     */
+    public Date getUltimaAtualizacao() {
+        return ultimaAtualizacao;
+    }
+
+    /**
+     * @param ultimaAtualizacao the ultimaAtualizacao to set
+     */
+    public void setUltimaAtualizacao(Date ultimaAtualizacao) {
+        this.ultimaAtualizacao = ultimaAtualizacao;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        
+        switch (estado) {
+            case 0:
+                status = "Aguardando Pagamento";
+                break;
+            case 1:
+                status = "Pedido Em Processamento";
+            break;
+            case 2:
+                status = "Faturamento";
+                break;
+            case 3:
+                status = "Em Transporte";
+            break;
+            case 4:
+                status = "Entregue";
+            break;
+            default:
+                status = "Sem estado";
+        }
+        
+        this.estado = estado;
     }
 }
