@@ -10,6 +10,7 @@ import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -45,9 +46,15 @@ public class Carrinho implements Serializable {
         recalcularTotal();
     }
     
-    public void removerProduto(Produto produto){
-        if (produtos.contains(produto))
-            produtos.remove(produto);
+    public void removerProduto(ObjectId id){
+        
+        ProdutoCarrinho item = null;
+        
+        for (ProdutoCarrinho produto : this.produtos)
+            if (produto.getProduto().getId().equals(id))
+                item = produto;
+        
+        this.produtos.remove(item);
     }
     
     private void recalcularTotal(){

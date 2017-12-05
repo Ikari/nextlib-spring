@@ -58,7 +58,7 @@ public class CarrinhoService {
     public Carrinho removerProduto(ObjectId produtoId){
         
         Carrinho carrinho = obterCarrinho();
-        carrinho.removerProduto(_repository.findOne(produtoId));
+        carrinho.removerProduto(produtoId);
         _request.getSession().setAttribute("carrinho", carrinho);                
         
         return carrinho;
