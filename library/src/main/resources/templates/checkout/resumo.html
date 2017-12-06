@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="col-xs-12 col-sm-12 col-lg-12">
                     <div class="row">
-                        <h2 th:text="'PEDIDO Nº ' + ${pedido.numero}" style="margin-left: 10px;"></h2>
+                       <!-- <h2 th:text="'PEDIDO Nº ' + ${pedido.numero}" style="margin-left: 10px;"></h2> -->
                         <hr style="width:90%">
                     </div>
                 </div>
@@ -18,10 +18,11 @@
                             <div class="col-xs-12 col-sm-12 col-lg-3">
                                 <!-- <div class="row" style="border: 1px solid graytext">-->
                                 <span><strong>Endereço de Entrega:</strong></span><br><br>
-                                <span th:text="${pedido.enderecoEntrega.cep}"></span><br>
-                                <span th:text="${pedido.enderecoEntrega.logradouro}"></span><br>
-                                <span th:text="${pedido.enderecoEntrega.complemento}"></span><br>
-                                <span th:text="${pedido.enderecoEntrega.cidade}"></span><br>
+                                <span th:text="'Endereço: ' + ${pedido.enderecoEntrega.logradouro}"></span><br>
+                                <!--<span th:text="'Complemento: ' + ${pedido.enderecoEntrega.complemento}"></span><br> -->
+                                <span th:text="'CEP: ' + ${pedido.enderecoEntrega.cep}"></span><br>
+                                <span th:text="'Cidade: ' + ${pedido.enderecoEntrega.cidade}"></span><br>
+                                <span th:text="'Estado: ' + ${pedido.enderecoEntrega.estado}"></span><br>
                                 <span>Frete: R$25,00</span><br>
                                 <br>
                                 <span></span><br>                 
