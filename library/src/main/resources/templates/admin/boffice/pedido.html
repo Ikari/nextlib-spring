@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <h3 class="form-signin-heading">Pedido</h3>
+                <br />
+                <div>
+                    <form method="POST" th:action="@{/backoffice/salvar}" th:object="${pedido}">
+                        <input type="hidden" th:field="*{id}" />
+                        <span><strong>Protocolo:</strong></span><span th:text="${pedido.numero}"></span><br/>
+                        <span><strong>Data da Compra:</strong></span><span th:text="${#calendars.format(pedido.data,'dd MMMM yyyy HH:mm')}"></span><br/>
+                        <span><strong>Data da Última Atualização:</strong></span><span th:text="${#calendars.format(pedido.ultimaAtualizacao,'dd MMMM yyyy HH:mm')}"></span><br/>
+                        <span><strong>Cliente:</strong></span><span th:text="${pedido.cliente.nome}"></span><br/>
+                        <span><strong>Status:</strong></span>
+                        <select th:field="*{estado}">
+                            <option th:value="0">Aguardando Pagamento</option>
+                            <option th:value="1">Pedido Em Processamento</option>
+                            <option th:value="2">Faturamento</option>
+                            <option th:value="3">Em Transporte</option>
+                            <option th:value="4">Entregue</option>
+                        </select><br/>
+                        <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Itens do pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr scope="row" th:each="item : ${pedido.itens}">
+                                <td th:text="${item.produto.nome}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        
+                         <span><strong>Total:</strong></span><span th:text="${#numbers.formatCurrency(pedido.valorTotal)}"></span><br>
+                        
+                        <input type="submit" value="Salvar" />
+                    </form>
+                </div>                
+            </div>                
+        </div>
+    </body>
+</html>
