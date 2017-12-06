@@ -6,40 +6,52 @@
     <body>
         <div layout:fragment="conteudo">
             <div class="container stylegeral">                
-                <div class="col-xs-12 col-sm-9">
+                <div class="col-xs-12 col-sm-12 col-md-9">
                     <div class="bs-example" data-example-id="panel-without-body-with-table"> 
                         <div class="panel panel-default"> 
                             <table class="table">
-                                <div class= "col-xs-12 col-sm-8 col-md-12 ng-scope">                                    
-                                    <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 400px; font-size:2em; text-align: center">
-                                        <p class="bg-warning" style="width:100%">Seu carrinho está vazio :(</p>
-                                    </div>                                    
-                                    <div th:each='item : ${carrinho.produtos}' scope="row" class="row" style="border-bottom: 1px solid lightgray;"> 
+                                <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 400px; font-size:2em; text-align: center">
+                                    <p class="bg-warning" style="width:100%">Seu carrinho está vazio :(</p>
+                                </div>  
+                                <div th:each='item : ${carrinho.produtos}' scope="row" class="row" style="border-bottom:1px solid lightgray;"> 
+                                    <div class="col-md-3 col-sm-5 col-xs-12">
+                                        <img style="padding: 4px; padding-top: 4px;" th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="90%" height="230px" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}">            
+                                    </div>
+                                    <div class="align-cart">
                                         <div class="col-xs-12 col-sm-12 col-md-3">
-                                            <img style="padding: 4px; padding-top: 4px;" th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="70%" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}">            
+                                            <h4 th:text='${item.produto.nome}'></h4>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-3">
-                                            <h3 th:text='${item.produto.nome}'></h3>
+                                        
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
                                             <h3><span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span></h3>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-3">                                            
-                                            <h3 style="text-align: center;">                                                
-                                                <a class="produto-up" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
-                                                <a class="produto-down" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
-                                            </h3>
-                                            <h3 style="text-align: center;"><span class="label label-default">Quantidade. <span th:text='${item.quantidade}'></span></span></h3>
+                                        <div class="col-xs-6 col-sm-3 col-md-2">
+                                            <div class="input-group number-spinner">
+                                                <span class="input-group-btn data-dwn">
+                                                    <div class="btn btn-default btn-info">
+                                                        <a class="produto-down" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-minus"></span></a>      
+                                                    </div>
+                                                </span>
+                                                <div class="form-control text-center"> <span th:text='${item.quantidade}'></span></div>
+                                                <span class="input-group-btn data-up">
+                                                    <div class="btn btn-default btn-info">
+                                                        <a class="produto-up" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-plus"></span></a>
+                                                    </div>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-3">                                                
-                                            <h1 style="text-align: center; margin-top: 50px;">
-                                                <a href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                                        <div class="col-xs-6 col-sm-6 col-md-3">                                                
+                                            <h1 style="text-align: center;">
+                                                <a href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}"><span class="fa fa-trash-o"></span></a>
                                             </h1> 
                                         </div>
                                     </div>
+                                </div>
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-3 ng-scope">        
+                <div class="col-xs-12 col-sm-12 col-md-3 ng-scope">        
                     <div class="panel panel-default">
                         <div class="panel-body"> 
                             <div th:if="${endereco != null}">
