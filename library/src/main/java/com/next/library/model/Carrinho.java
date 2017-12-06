@@ -39,11 +39,30 @@ public class Carrinho implements Serializable {
         for (ProdutoCarrinho item : produtos)
             if (item.getProduto().getId().equals(produto.getId())) {
                 item.adicionar();
+                recalcularTotal();
                 return;
             }
         
         produtos.add(new ProdutoCarrinho(produto, quantidade));        
         recalcularTotal();
+    }
+    
+    public void subtrairProduto(Produto produto, int quantidade){
+             
+        ProdutoCarrinho retirar = null;
+        
+        for (ProdutoCarrinho item : produtos)
+            if (item.getProduto().getId().equals(produto.getId())) {
+                int qtd = item.subtrair();
+                recalcularTotal();
+                
+                if (qtd > 0)                
+                    return;
+                
+                retirar = item;
+            }
+        
+        this.produtos.remove(retirar);
     }
     
     public void removerProduto(ObjectId id){
@@ -55,6 +74,8 @@ public class Carrinho implements Serializable {
                 item = produto;
         
         this.produtos.remove(item);
+        
+        recalcularTotal();
     }
     
     private void recalcularTotal(){

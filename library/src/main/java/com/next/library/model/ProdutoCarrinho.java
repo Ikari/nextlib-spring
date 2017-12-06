@@ -79,4 +79,8 @@ public class ProdutoCarrinho implements Serializable {
     public int adicionar(){
         return this.quantidade++;
     }
+    
+    public int subtrair(){
+        return this.quantidade--;
+    }
 }

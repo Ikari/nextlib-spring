@@ -6,7 +6,6 @@ import com.next.library.service.*;
 import javax.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,6 +61,20 @@ public class CarrinhoController {
             return false;
         
         service.adicionarProduto(produto, 1);
+        
+        return true;
+    }
+    
+    @RequestMapping(value="/subtrair/{id}")
+    public boolean subtrairProduto(
+            @PathVariable("id") @Valid ObjectId id){
+                
+        Produto produto = produtoRepository.findOne(id);
+               
+        if (produto == null)
+            return false;
+        
+        service.subtrairProduto(produto, 1);
         
         return true;
     }

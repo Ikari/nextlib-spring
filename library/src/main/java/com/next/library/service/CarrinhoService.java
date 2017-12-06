@@ -55,6 +55,22 @@ public class CarrinhoService {
         return carrinho;
     }
     
+    public Carrinho subtrairProduto(ObjectId id, int quantidade){
+        
+        Produto produto = _repository.findOne(id);
+        
+        return subtrairProduto(produto, quantidade);
+    }
+    
+    public Carrinho subtrairProduto(Produto produto, int quantidade){
+        
+        Carrinho carrinho = obterCarrinho();
+        carrinho.subtrairProduto(produto, quantidade);
+        _request.getSession().setAttribute("carrinho", carrinho);
+        
+        return carrinho;
+    }
+    
     public Carrinho removerProduto(ObjectId produtoId){
         
         Carrinho carrinho = obterCarrinho();
