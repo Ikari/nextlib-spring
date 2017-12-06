@@ -30,12 +30,12 @@ public class BackofficeController {
     
     @RequestMapping("/pedidos")
     public ModelAndView pedidos(){        
-        return new ModelAndView("backoffice/pedidos").addObject("pedidos", _repository.findAll(new Sort(Sort.Direction.DESC, "data")));
+        return new ModelAndView("admin/boffice/pedidos").addObject("pedidos", _repository.findAll(new Sort(Sort.Direction.DESC, "data")));
     }
     
     @RequestMapping("/pedido/{id}")
     public ModelAndView pedido(@PathVariable ObjectId id){        
-        return new ModelAndView("backoffice/pedido").addObject("pedido", _repository.findOne(id));
+        return new ModelAndView("admin/boffice/pedido").addObject("pedido", _repository.findOne(id));
     }
     
     @RequestMapping(value="/salvar", method=RequestMethod.POST)

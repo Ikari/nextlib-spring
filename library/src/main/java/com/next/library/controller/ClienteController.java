@@ -6,9 +6,13 @@
 package com.next.library.controller;
 
 import com.next.library.model.Endereco;
+import com.next.library.model.Usuario;
+import com.next.library.repository.IPedidoRepository;
 import com.next.library.service.ClienteService;
+import com.next.library.service.UsuarioService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +29,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/cliente")
 public class ClienteController {
     
-    @Autowired ClienteService service;
+    @Autowired ClienteService service;    
+    @Autowired UsuarioService userService;
+    @Autowired IPedidoRepository pedidoRepository;
     
     @RequestMapping(value="/adicionar-endereco", method=RequestMethod.POST)    
     public ModelAndView adicionarProduto(
@@ -41,5 +47,13 @@ public class ClienteController {
         //service.cadastrarEndereco(produto.getId(), 1);
         
         return new ModelAndView("redirect:/carrinho");
+    }
+    
+    @RequestMapping("/pedidos")
+    public ModelAndView carrinho(){        
+        
+        Usuario usuario = userService.obterUsuarioLogado();
+        
+        return new ModelAndView("cliente/pedidos").addObject("pedidos", pedidoRepository.findPedidoByCliente(usuario.getCliente(), new Sort(Sort.Direction.DESC, "data")));
     }
 }
