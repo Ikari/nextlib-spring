@@ -5,53 +5,69 @@
     </head>
     <body>
         <div layout:fragment="conteudo">
-            <div class="container stylegeral">                
-                <div class="col-xs-12 col-sm-12 col-md-9">
-                    <div class="bs-example" data-example-id="panel-without-body-with-table"> 
-                        <div class="panel panel-default"> 
-                            <table class="table">
-                                <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 400px; font-size:2em; text-align: center">
-                                    <p class="bg-warning" style="width:100%">Seu carrinho está vazio :(</p>
-                                </div>  
-                                <div th:each='item : ${carrinho.produtos}' scope="row" class="row" style="border-bottom:1px solid lightgray;"> 
-                                    <div class="col-md-3 col-sm-5 col-xs-12">
-                                        <img style="padding: 4px; padding-top: 4px;" th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="90%" height="230px" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}">            
-                                    </div>
-                                    <div class="align-cart">
-                                        <div class="col-xs-12 col-sm-12 col-md-3">
-                                            <h4 th:text='${item.produto.nome}'></h4>
-                                        </div>
-                                        
-                                        <div class="col-xs-12 col-sm-12 col-md-2">
-                                            <h3><span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span></h3>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3 col-md-2">
-                                            <div class="input-group number-spinner">
-                                                <span class="input-group-btn data-dwn">
-                                                    <div class="btn btn-default btn-info">
-                                                        <a class="produto-down" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-minus"></span></a>      
-                                                    </div>
-                                                </span>
-                                                <div class="form-control text-center"> <span th:text='${item.quantidade}'></span></div>
-                                                <span class="input-group-btn data-up">
-                                                    <div class="btn btn-default btn-info">
-                                                        <a class="produto-up" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-plus"></span></a>
-                                                    </div>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-3">                                                
-                                            <h1 style="text-align: center;">
-                                                <a href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}"><span class="fa fa-trash-o"></span></a>
-                                            </h1> 
-                                        </div>
-                                    </div>
+            <div class="container ">    
+                <div class="col-md-9">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <div th:if="${#lists.isEmpty(carrinho.produtos)}" style="height: 100px; font-size:2em;">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            Seu carrinho está vazio 
+                                            <small class="pull-right">Adquira produtos em nossa loja!</small>
+                                        </h3>
+                                    </div>                
                                 </div>
-                            </table>
-                        </div>
+                            </div> 
+                            <tr th:each='item : ${carrinho.produtos}'>
+                                <td>
+                                    <div class="col-md-3 col-sm-5 col-xs-12">
+                                        <div class="col-sm-2 col-md-5"><img style="width: 100px; height: 100px;"  th:src="@{'data:image/jpeg;base64,'+${item.produto.base64Imagem}}" width="90%" height="230px" th:alt="${item.produto.alt}" th:title="${item.produto.titulo}"> </div>
+                                </td>
+                                <td>  
+                                    <h5 th:text='${item.produto.nome}'></h5>
+                                </td>
+                                <td>       
+                                    <div class="col-xs-12 col-sm-3 col-md-3" >
+                                        <div class="input-group number-spinner">
+                                            <span class="input-group-btn data-dwn">
+                                                <div class="btn btn-default btn-info">
+                                                    <a class="produto-down" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-minus"></span></a>      
+                                                </div>
+                                            </span>
+                                            <div class="form-control text-center"> <span th:text='${item.quantidade}'></span></div>
+                                            <span class="input-group-btn data-up">
+                                                <div class="btn btn-default btn-info">
+                                                    <a class="produto-up" th:attr="data-id=${item.produto.id}"><span class="glyphicon glyphicon-plus"></span></a>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>                  
+                                <td>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <span th:text='${#numbers.formatCurrency(item.produto.preco)}'></span>
+                                    </div>
+                                </td>
+                                <td class="actions" data-th="">
+                                    <div class="col-xs-6 col-sm-6 col-md-3">                                                
+                                        <h1 style="text-align: center;">
+                                            <a href="#" th:href="@{/carrinho/remover/{id}(id=${item.produto.id})}"><span class="fa fa-trash-o"></span></a>
+                                        </h1> 
+                                    </div>								
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td><a th:href="@{/produtos}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar comprando</a></td>
+                                    <td colspan="2" class="hidden-xs"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 ng-scope">        
+                <div class="col-xs-12 col-sm-12 col-md-3">        
                     <div class="panel panel-default">
                         <div class="panel-body"> 
                             <div th:if="${endereco != null}">
@@ -83,7 +99,7 @@
                         </div>
                     </div>
                 </div> 
-            </div>                
+            </div>                    
             <script src="../../../resources/js/pages/carrinho.js" type="text/javascript"></script>
         </div>
     </body>
