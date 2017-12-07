@@ -5,12 +5,24 @@
     </head>
     <body>
         <div layout:fragment="conteudo">
-            <div class="row">
-                <div class="container formulario login">
-                    <form th:action="@{/login/cadastrar/3}" th:object="${endereco}" method="POST" class="form-group form-group-sm formulario">
-                        <div th:replace="~{shared/endereco}"></div>
-                        <button class="btn bnt-lg btn-primary btn-block" name="Submit" value="Cadastrar" type="submit" th:text="Cadastrar"></button>
-                    </form>
+            <div class="container login">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-login">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <a href="#" class="active" id="login-form-link">Cadastro de cliente</a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <form th:action="@{/login/cadastrar/3}" th:object="${endereco}" method="POST" class="form-group form-group-sm formulario">
+                                <div th:replace="~{shared/endereco}"></div>
+                                <button class="form-control btn btn-login btn-block" name="Submit" value="Cadastrar" type="submit" th:text="Cadastrar"></button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
