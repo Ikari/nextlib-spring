@@ -48,14 +48,8 @@
                                 <li><a th:href="@{/backoffice/pedidos}">Lista de Pedidos</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="hidden-xs">
-                                    <a th:href="@{/carrinho}">
-                                        <i class="glyphicon glyphicon-shopping-cart"></i> Carrinho</a>
-                                </li>
-                                <li>
-                                    <a th:href="@{/login}">Login</a>
-                                </li>
-                                <li class="hidden-xs">                                    
+                                <li th:if="${session.usuario == null}"><a th:href="@{/login}"><i class="glyphicon glyphicon-user"> Login</i></a></li>
+                                <li th:if="${session.usuario != null}" class="hidden-xs">
                                     <a sec:authentication="principal.email" th:href="@{/logout}" title="Log In"><i class="glyphicon glyphicon-user"> Logout </i></a>
                                 </li>
                             </ul>
