@@ -14,6 +14,7 @@
                             <tr>
                                 <th>Protocolo</th>
                                 <th>Data da Compra</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -21,7 +22,8 @@
                             <tr scope="row" th:each="pedido : ${pedidos}">
                                 <td th:text="${pedido.numero}"></td>
                                 <td th:text="${#calendars.format(pedido.data,'dd MMMM yyyy HH:mm')}"></td>
-                                <td><a th:href="@{/cliente/pedido/{id}(id=pedido.id)}">Detalhe</a></td>
+                                <td th:text="${pedido.status}"></td>
+                                <td><a th:href="@{/cliente/pedido/{id}(id=${pedido.id})}">Detalhes</a></td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/main}">
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <div layout:fragment="conteudo">
+            <div class="container">
+                <h3 class="form-signin-heading">Detalhes do pedido <span th:text="${pedido.numero}"></span></h3>
+                <br />
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Valor Unitário</th>
+                                <th>Valor Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr scope="row" th:each="item : ${pedido.itens}">
+                                <td th:text="${item.produto.nome}"></td>
+                                <td th:text="${item.quantidade}"></td>
+                                <td th:text="${#numbers.formatCurrency(item.valorUnitario)}"></td>
+                                <td th:text="${#numbers.formatCurrency(item.valorUnitario * item.quantidade)}"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td th:text="'Total: ' + ${#numbers.formatCurrency(pedido.valorTotal + 25)}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a th:href="@{/cliente/pedidos}">Voltar</a>
+                </div>                
+            </div>                
+        </div>
+    </body>
+</html>

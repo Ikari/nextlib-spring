@@ -11,11 +11,13 @@ import com.next.library.repository.IPedidoRepository;
 import com.next.library.service.ClienteService;
 import com.next.library.service.UsuarioService;
 import javax.validation.Valid;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,10 +52,15 @@ public class ClienteController {
     }
     
     @RequestMapping("/pedidos")
-    public ModelAndView carrinho(){        
+    public ModelAndView pedidos(){        
         
         Usuario usuario = userService.obterUsuarioLogado();
         
         return new ModelAndView("cliente/pedidos").addObject("pedidos", pedidoRepository.findPedidoByCliente(usuario.getCliente(), new Sort(Sort.Direction.DESC, "data")));
+    }
+    
+    @RequestMapping("/pedido/{id}")
+    public ModelAndView detalhe(@PathVariable("id") ObjectId id){                
+        return new ModelAndView("cliente/detalhes").addObject("pedido", pedidoRepository.findOne(id));
     }
 }
